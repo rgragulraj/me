@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragul Raj</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1f7f 0%, #2d3ba8 50%, #1a1f7f 100%);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.65;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 200px;
+            padding: 2rem 1.5rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            transition: opacity 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 3px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+
+        .nav-link.active::before {
+            opacity: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 200px;
+            flex: 1;
+            padding: 4rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .intro-section {
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+        }
+
+        h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 1.25rem;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffd700;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* Grid Background Effect */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 150px;
+                padding: 1.5rem 1rem;
+            }
+
+            .main-content {
+                margin-left: 150px;
+                padding: 3rem 3rem;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .grid-bg {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 1.5rem;
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                display: flex;
+                gap: 2rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                margin-bottom: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 2.5rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .subtitle {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <aside class="sidebar">
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active">OVERVIEW</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">3D PRINTING</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">EMBEDDED SYSTEMS</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">ROBOTICS</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">SOFTWARE</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">PROJECTS</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <h1>Ragul Raj</h1>
+        <div class="subtitle">Robotics & Systems Engineer</div>
+        
+        <section class="intro-section">
+            <p>I build software and hardware systems with a focus on real-world use. My work spans robotics, embedded systems, and small software projects that support or interact with physical systems.</p>
+            
+            <p>Currently an undergraduate robotics student at ASU, supporting fabrication and prototyping projects at the Innovation Hub. I help students bring ideas to life by maintaining and troubleshooting prototyping equipment and conducting hands-on workshops.</p>
+        </section>
+    </main>
+</body>
+</html>
