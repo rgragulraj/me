@@ -162,11 +162,41 @@
             width: 60%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
             background-size: 50px 50px;
+            background-position: 0 0;
             pointer-events: none;
             z-index: 1;
+            opacity: 1;
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+            transition: transform 0.15s ease-out, filter 0.15s ease-out;
+            transform-origin: var(--mouse-x, 50%) var(--mouse-y, 50%);
+        }
+
+        /* Grid repel effect overlay */
+        .grid-repel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                transparent 0%, 
+                transparent 30%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 70%);
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .grid-repel.active {
+            opacity: 1;
         }
 
         /* Responsive */
@@ -186,6 +216,12 @@
             }
 
             .grid-bg {
+                width: 100%;
+                background-size: 40px 40px;
+                opacity: 0.9;
+            }
+
+            .grid-repel {
                 width: 100%;
             }
         }
@@ -227,11 +263,21 @@
                 margin-bottom: 0.5rem;
             }
 
+            .grid-bg {
+                width: 100%;
+                background-size: 30px 30px;
+                opacity: 0.8;
+            }
+
+            .grid-repel {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="grid-bg"></div>
+    <div class="grid-repel"></div>
     
     <aside class="sidebar">
         <nav>
@@ -253,5 +299,56 @@
             <p>Currently an undergraduate robotics student at ASU, supporting fabrication and prototyping projects at the Innovation Hub. I help students bring ideas to life by maintaining and troubleshooting prototyping equipment and conducting hands-on workshops.</p>
         </section>
     </main>
+
+    <script>
+        // Interactive grid repel effect
+        const gridBg = document.querySelector('.grid-bg');
+        const gridRepel = document.querySelector('.grid-repel');
+        const gridRect = gridBg.getBoundingClientRect();
+
+        // Track mouse movement over the grid area
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            // Check if mouse is over the grid area
+            const rect = gridBg.getBoundingClientRect();
+            const isOverGrid = mouseX >= rect.left && mouseX <= rect.right && 
+                              mouseY >= rect.top && mouseY <= rect.bottom;
+
+            if (isOverGrid) {
+                // Calculate relative position within grid
+                const relativeX = ((mouseX - rect.left) / rect.width) * 100;
+                const relativeY = ((mouseY - rect.top) / rect.height) * 100;
+                
+                // Calculate distance from center for repel effect
+                const centerX = 50;
+                const centerY = 50;
+                const deltaX = relativeX - centerX;
+                const deltaY = relativeY - centerY;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                
+                // Create repel effect - scale and rotate based on mouse position
+                const repelStrength = Math.min(distance / 50, 1.5);
+                const scale = 1 + (repelStrength * 0.08);
+                const rotateX = (deltaY / 100) * 2;
+                const rotateY = (deltaX / 100) * -2;
+                
+                // Apply transform to create repel effect
+                gridBg.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+                gridBg.style.filter = `brightness(${1 + repelStrength * 0.1})`;
+                
+                // Update repel overlay position
+                gridRepel.style.setProperty('--mouse-x', relativeX + '%');
+                gridRepel.style.setProperty('--mouse-y', relativeY + '%');
+                gridRepel.classList.add('active');
+            } else {
+                // Reset when mouse leaves grid area
+                gridBg.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                gridBg.style.filter = 'brightness(1)';
+                gridRepel.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
