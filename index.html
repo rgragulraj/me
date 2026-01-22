@@ -75,6 +75,52 @@
             opacity: 1;
         }
 
+        /* Menu Button - Hidden by default, shown on mobile */
+        .menu-button {
+            display: none;
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 1000;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            width: 24px;
+            height: 18px;
+        }
+
+        .menu-button span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #fff;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        .menu-button.hidden {
+            display: none;
+        }
+
+        /* Sidebar Overlay - Mobile only */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+        }
+
         /* Main Content */
         .main-content {
             margin-left: 200px;
@@ -231,36 +277,65 @@
                 flex-direction: column;
             }
 
+            /* Menu Button - Show on mobile */
+            .menu-button {
+                display: block;
+            }
+
+            .menu-button.hidden {
+                display: none;
+            }
+
+            /* Sidebar Overlay - Show on mobile */
+            .sidebar-overlay {
+                display: block;
+            }
+
+            /* Sidebar - Hidden by default on mobile, slides in when toggled */
             .sidebar {
-                width: 100%;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 1.5rem;
-                position: relative;
-                display: flex;
-                align-items: center;
-                gap: 2rem;
+                width: 250px;
+                height: 100vh;
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 2rem 1.5rem;
+                position: fixed;
+                left: -250px;
+                top: 0;
+                transition: left 0.3s ease;
+                z-index: 999;
+                background: linear-gradient(135deg, #1a1f7f 0%, #2d3ba8 50%, #1a1f7f 100%);
+                display: block;
+            }
+
+            .sidebar.active {
+                left: 0;
             }
 
             .nav-menu {
-                display: flex;
-                gap: 2rem;
-                flex-wrap: wrap;
+                display: block;
+                list-style: none;
             }
 
             .nav-item {
-                margin-bottom: 0;
+                margin-bottom: 1.5rem;
             }
 
             .main-content {
                 margin-left: 0;
                 padding: 2.5rem 1.5rem;
+                align-items: flex-start;
+                justify-content: center;
+                min-height: 100vh;
             }
 
             h1 {
                 font-size: 2.2rem;
                 margin-bottom: 0.5rem;
+                text-align: left;
+            }
+
+            .intro-section {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .grid-bg {
@@ -279,7 +354,15 @@
     <div class="grid-bg"></div>
     <div class="grid-repel"></div>
     
-    <aside class="sidebar">
+    <button class="menu-button" id="menuButton" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <aside class="sidebar" id="sidebar">
         <nav>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link active">OVERVIEW</a></li>
@@ -301,6 +384,53 @@
     </main>
 
     <script>
+        // Mobile menu toggle functionality
+        const menuButton = document.getElementById('menuButton');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            sidebar.classList.add('active');
+            sidebarOverlay.classList.add('active');
+            menuButton.classList.add('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            menuButton.classList.remove('hidden');
+        }
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('active')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        // Only open/close menu when clicking the button
+        menuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleSidebar();
+        });
+
+        // Close menu when clicking overlay
+        sidebarOverlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeSidebar();
+        });
+
+        // Close sidebar when clicking on nav links (mobile only)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
+            });
+        });
+
         // Interactive grid repel effect
         const gridBg = document.querySelector('.grid-bg');
         const gridRepel = document.querySelector('.grid-repel');
