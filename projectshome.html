@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ragul Raj</title>
+    <title>Projects - Ragul Raj</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -143,8 +143,86 @@
 
 
         .intro-section {
-            margin-bottom: 3rem;
-            max-width: 600px;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .project-list {
+            list-style: none;
+            max-width: 700px;
+        }
+
+        .project-item {
+            position: relative;
+            margin-bottom: 1.75rem;
+            padding-left: 2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.5rem;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .project-box {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-box:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .project-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .project-link {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-date {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .project-desc {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .project-desc code {
+            font-size: 0.9em;
+            padding: 0.15em 0.4em;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
         }
 
         p {
@@ -333,9 +411,22 @@
                 text-align: left;
             }
 
-            .intro-section {
+            .intro-section,
+            .project-list {
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .project-item {
+                padding-left: 1.75rem;
+            }
+
+            .project-item::before {
+                top: 1.25rem;
+            }
+
+            .project-box {
+                padding: 1rem 1.25rem;
             }
 
             .grid-bg {
@@ -365,8 +456,8 @@
     <aside class="sidebar" id="sidebar">
         <nav>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link active">OVERVIEW</a></li>
-                <li class="nav-item"><a href="projectshome.html" class="nav-link">PROJECTS</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">OVERVIEW</a></li>
+                <li class="nav-item"><a href="projectshome.html" class="nav-link active">PROJECTS</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">EXPERIENCE</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">EDUCATION</a></li>
 
@@ -375,12 +466,10 @@
     </aside>
 
     <main class="main-content">
-        <h1>Ragul Raj</h1>
-        <section class="intro-section">
-            <p>I build software and hardware systems with a focus on real-world use. My work spans robotics, embedded systems, and small software projects that support or interact with physical systems.</p>
-            
-            <p>Currently an undergraduate robotics student at ASU, supporting fabrication and prototyping projects at the Innovation Hub. I help students bring ideas to life by maintaining and troubleshooting prototyping equipment and conducting hands-on workshops.</p>
-        </section>
+        <h1>Projects</h1>
+        <ul class="project-list" id="projectList">
+            <!-- Projects will be loaded here dynamically -->
+        </ul>
     </main>
 
     <script>
@@ -430,6 +519,92 @@
                 }
             });
         });
+
+        // Parse frontmatter from markdown content
+        function parseFrontmatter(markdown) {
+            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+            const match = markdown.match(frontmatterRegex);
+            
+            if (!match) {
+                return { frontmatter: {}, body: markdown };
+            }
+            
+            const frontmatterText = match[1];
+            const body = match[2];
+            const frontmatter = {};
+            
+            // Parse YAML-like frontmatter (simple key: value pairs)
+            frontmatterText.split('\n').forEach(line => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > 0) {
+                    const key = line.substring(0, colonIndex).trim();
+                    let value = line.substring(colonIndex + 1).trim();
+                    // Remove quotes if present
+                    if ((value.startsWith('"') && value.endsWith('"')) || 
+                        (value.startsWith("'") && value.endsWith("'"))) {
+                        value = value.slice(1, -1);
+                    }
+                    frontmatter[key] = value;
+                }
+            });
+            
+            return { frontmatter, body };
+        }
+
+        // Load and render projects
+        async function loadProjects() {
+            const projectList = document.getElementById('projectList');
+            
+            try {
+                // Fetch the index of project slugs
+                const indexResponse = await fetch('projects/index.json');
+                const slugs = await indexResponse.json();
+                
+                // Fetch and render each project
+                const projectPromises = slugs.map(async (slug) => {
+                    try {
+                        const mdResponse = await fetch(`projects/${slug}.md`);
+                        const markdown = await mdResponse.text();
+                        const { frontmatter } = parseFrontmatter(markdown);
+                        
+                        const title = frontmatter.title || slug;
+                        const date = frontmatter.date || '';
+                        const summary = frontmatter.summary || '';
+                        
+                        // Create project item HTML
+                        const li = document.createElement('li');
+                        li.className = 'project-item';
+                        li.innerHTML = `
+                            <div class="project-box">
+                                <div class="project-header">
+                                    <a href="projects/project.html?slug=${slug}" class="project-link">${title}</a>
+                                    <span class="project-date">${date}</span>
+                                </div>
+                                <p class="project-desc">${summary}</p>
+                            </div>
+                        `;
+                        
+                        return li;
+                    } catch (error) {
+                        console.error(`Error loading project ${slug}:`, error);
+                        return null;
+                    }
+                });
+                
+                const projectElements = await Promise.all(projectPromises);
+                projectElements.forEach(element => {
+                    if (element) {
+                        projectList.appendChild(element);
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                projectList.innerHTML = '<li class="project-item"><p>Error loading projects. Please ensure the site is served over HTTP.</p></li>';
+            }
+        }
+
+        // Load projects on page load
+        loadProjects();
 
         // Interactive grid repel effect
         const gridBg = document.querySelector('.grid-bg');

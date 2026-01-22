@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ragul Raj</title>
+    <title>Project - Ragul Raj</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -23,7 +24,6 @@
             display: flex;
         }
 
-        /* Sidebar Navigation */
         .sidebar {
             width: 200px;
             padding: 2rem 1.5rem;
@@ -33,13 +33,8 @@
             overflow-y: auto;
         }
 
-        .nav-menu {
-            list-style: none;
-        }
-
-        .nav-item {
-            margin-bottom: 1.5rem;
-        }
+        .nav-menu { list-style: none; }
+        .nav-item { margin-bottom: 1.5rem; }
 
         .nav-link {
             color: #fff;
@@ -67,15 +62,9 @@
             transition: opacity 0.3s ease;
         }
 
-        .nav-link:hover {
-            opacity: 0.7;
-        }
+        .nav-link:hover { opacity: 0.7; }
+        .nav-link.active::before { opacity: 1; }
 
-        .nav-link.active::before {
-            opacity: 1;
-        }
-
-        /* Menu Button - Hidden by default, shown on mobile */
         .menu-button {
             display: none;
             position: fixed;
@@ -99,11 +88,8 @@
             transition: all 0.3s ease;
         }
 
-        .menu-button.hidden {
-            display: none;
-        }
+        .menu-button.hidden { display: none; }
 
-        /* Sidebar Overlay - Mobile only */
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -117,11 +103,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .sidebar-overlay.active {
-            opacity: 1;
-        }
+        .sidebar-overlay.active { opacity: 1; }
 
-        /* Main Content */
         .main-content {
             margin-left: 200px;
             flex: 1;
@@ -140,14 +123,11 @@
             color: #fff;
         }
 
-
-
-        .intro-section {
-            margin-bottom: 3rem;
-            max-width: 600px;
+        .project-content {
+            max-width: 700px;
         }
 
-        p {
+        .project-content p {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             margin-bottom: 1.5rem;
             font-size: 1rem;
@@ -155,22 +135,104 @@
             line-height: 1.8;
         }
 
-        h2 {
-            font-size: 0.95rem;
+        .project-content h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.5rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
             color: #fff;
-            text-transform: uppercase;
         }
 
-        ul {
-            list-style: none;
+        .project-content h3 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #fff;
         }
 
-        li {
-            margin-bottom: 1.25rem;
+        .project-content ul, .project-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
         }
+
+        .project-content li {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .project-content code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            padding: 0.15em 0.4em;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        .project-content pre {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .project-content a {
+            color: #ffd700;
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-content a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .project-content a:hover::after {
+            width: 100%;
+        }
+
+        .project-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+
+        .project-content blockquote {
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        .loading {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        .error {
+            color: rgba(255, 100, 100, 0.9);
+        }
+
+        ul { list-style: none; }
+        li { margin-bottom: 1.25rem; }
 
         a {
             color: #fff;
@@ -192,22 +254,16 @@
             transition: width 0.3s ease;
         }
 
-        a:hover {
-            color: #ffd700;
-        }
+        a:hover { color: #ffd700; }
+        a:hover::after { width: 100%; }
 
-        a:hover::after {
-            width: 100%;
-        }
-
-        /* Grid Background Effect */
         .grid-bg {
             position: fixed;
             top: 0;
             right: 0;
             width: 60%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -221,7 +277,6 @@
             transform-origin: var(--mouse-x, 50%) var(--mouse-y, 50%);
         }
 
-        /* Grid repel effect overlay */
         .grid-repel {
             position: fixed;
             top: 0;
@@ -230,8 +285,8 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                transparent 0%, 
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                transparent 0%,
                 transparent 30%,
                 rgba(255, 255, 255, 0.05) 50%,
                 transparent 70%);
@@ -241,57 +296,21 @@
             transition: opacity 0.2s ease;
         }
 
-        .grid-repel.active {
-            opacity: 1;
-        }
+        .grid-repel.active { opacity: 1; }
 
-        /* Responsive */
         @media (max-width: 1024px) {
-            .sidebar {
-                width: 150px;
-                padding: 1.5rem 1rem;
-            }
-
-            .main-content {
-                margin-left: 150px;
-                padding: 3rem 3rem;
-            }
-
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            .grid-bg {
-                width: 100%;
-                background-size: 40px 40px;
-                opacity: 0.9;
-            }
-
-            .grid-repel {
-                width: 100%;
-            }
+            .sidebar { width: 150px; padding: 1.5rem 1rem; }
+            .main-content { margin-left: 150px; padding: 3rem 3rem; }
+            h1 { font-size: 2.8rem; }
+            .grid-bg { width: 100%; background-size: 40px 40px; opacity: 0.9; }
+            .grid-repel { width: 100%; }
         }
 
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            /* Menu Button - Show on mobile */
-            .menu-button {
-                display: block;
-            }
-
-            .menu-button.hidden {
-                display: none;
-            }
-
-            /* Sidebar Overlay - Show on mobile */
-            .sidebar-overlay {
-                display: block;
-            }
-
-            /* Sidebar - Hidden by default on mobile, slides in when toggled */
+            body { flex-direction: column; }
+            .menu-button { display: block; }
+            .menu-button.hidden { display: none; }
+            .sidebar-overlay { display: block; }
             .sidebar {
                 width: 250px;
                 height: 100vh;
@@ -305,20 +324,9 @@
                 background: linear-gradient(135deg, #1a1f7f 0%, #2d3ba8 50%, #1a1f7f 100%);
                 display: block;
             }
-
-            .sidebar.active {
-                left: 0;
-            }
-
-            .nav-menu {
-                display: block;
-                list-style: none;
-            }
-
-            .nav-item {
-                margin-bottom: 1.5rem;
-            }
-
+            .sidebar.active { left: 0; }
+            .nav-menu { display: block; list-style: none; }
+            .nav-item { margin-bottom: 1.5rem; }
             .main-content {
                 margin-left: 0;
                 padding: 2.5rem 1.5rem;
@@ -326,64 +334,112 @@
                 justify-content: center;
                 min-height: 100vh;
             }
-
-            h1 {
-                font-size: 2.2rem;
-                margin-bottom: 0.5rem;
-                text-align: left;
-            }
-
-            .intro-section {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .grid-bg {
-                width: 100%;
-                background-size: 30px 30px;
-                opacity: 0.8;
-            }
-
-            .grid-repel {
-                width: 100%;
-            }
+            h1 { font-size: 2.2rem; margin-bottom: 0.5rem; text-align: left; }
+            .project-content { margin-left: auto; margin-right: auto; }
+            .grid-bg { width: 100%; background-size: 30px 30px; opacity: 0.8; }
+            .grid-repel { width: 100%; }
         }
     </style>
 </head>
 <body>
     <div class="grid-bg"></div>
     <div class="grid-repel"></div>
-    
+
     <button class="menu-button" id="menuButton" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </button>
-    
+
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
+
     <aside class="sidebar" id="sidebar">
         <nav>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link active">OVERVIEW</a></li>
-                <li class="nav-item"><a href="projectshome.html" class="nav-link">PROJECTS</a></li>
+                <li class="nav-item"><a href="../index.html" class="nav-link">OVERVIEW</a></li>
+                <li class="nav-item"><a href="../projectshome.html" class="nav-link">PROJECTS</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">EXPERIENCE</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">EDUCATION</a></li>
-
             </ul>
         </nav>
     </aside>
 
     <main class="main-content">
-        <h1>Ragul Raj</h1>
-        <section class="intro-section">
-            <p>I build software and hardware systems with a focus on real-world use. My work spans robotics, embedded systems, and small software projects that support or interact with physical systems.</p>
-            
-            <p>Currently an undergraduate robotics student at ASU, supporting fabrication and prototyping projects at the Innovation Hub. I help students bring ideas to life by maintaining and troubleshooting prototyping equipment and conducting hands-on workshops.</p>
-        </section>
+        <h1 id="projectTitle">Loading...</h1>
+        <div class="project-content" id="projectContent">
+            <p class="loading">Loading project content...</p>
+        </div>
     </main>
 
     <script>
+        // Parse frontmatter from markdown content
+        function parseFrontmatter(markdown) {
+            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+            const match = markdown.match(frontmatterRegex);
+            
+            if (!match) {
+                return { frontmatter: {}, body: markdown };
+            }
+            
+            const frontmatterText = match[1];
+            const body = match[2];
+            const frontmatter = {};
+            
+            // Parse YAML-like frontmatter (simple key: value pairs)
+            frontmatterText.split('\n').forEach(line => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > 0) {
+                    const key = line.substring(0, colonIndex).trim();
+                    let value = line.substring(colonIndex + 1).trim();
+                    // Remove quotes if present
+                    if ((value.startsWith('"') && value.endsWith('"')) || 
+                        (value.startsWith("'") && value.endsWith("'"))) {
+                        value = value.slice(1, -1);
+                    }
+                    frontmatter[key] = value;
+                }
+            });
+            
+            return { frontmatter, body };
+        }
+
+        // Load project content
+        async function loadProject() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            
+            if (!slug) {
+                document.getElementById('projectTitle').textContent = 'Project Not Found';
+                document.getElementById('projectContent').innerHTML = '<p class="error">No project slug specified in URL.</p>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${slug}.md`);
+                const markdown = await response.text();
+                const { frontmatter, body } = parseFrontmatter(markdown);
+                
+                // Set title and heading
+                const title = frontmatter.title || slug;
+                document.title = `${title} - Ragul Raj`;
+                document.getElementById('projectTitle').textContent = title;
+                
+                // Render markdown body
+                if (typeof marked !== 'undefined') {
+                    const html = marked.parse(body);
+                    document.getElementById('projectContent').innerHTML = html;
+                } else {
+                    // Fallback if marked.js hasn't loaded
+                    document.getElementById('projectContent').innerHTML = `<pre>${body}</pre>`;
+                }
+            } catch (error) {
+                console.error('Error loading project:', error);
+                document.getElementById('projectTitle').textContent = 'Project Not Found';
+                document.getElementById('projectContent').innerHTML = '<p class="error">Error loading project. Please ensure the site is served over HTTP.</p>';
+            }
+        }
+
+        // Load project on page load
+        loadProject();
+
         // Mobile menu toggle functionality
         const menuButton = document.getElementById('menuButton');
         const sidebar = document.getElementById('sidebar');
@@ -402,78 +458,46 @@
         }
 
         function toggleSidebar() {
-            if (sidebar.classList.contains('active')) {
-                closeSidebar();
-            } else {
-                openSidebar();
-            }
+            if (sidebar.classList.contains('active')) closeSidebar();
+            else openSidebar();
         }
 
-        // Only open/close menu when clicking the button
-        menuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleSidebar();
-        });
+        menuButton.addEventListener('click', (e) => { e.stopPropagation(); toggleSidebar(); });
+        sidebarOverlay.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
 
-        // Close menu when clicking overlay
-        sidebarOverlay.addEventListener('click', (e) => {
-            e.stopPropagation();
-            closeSidebar();
-        });
-
-        // Close sidebar when clicking on nav links (mobile only)
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    toggleSidebar();
-                }
+                if (window.innerWidth <= 768) toggleSidebar();
             });
         });
 
         // Interactive grid repel effect
         const gridBg = document.querySelector('.grid-bg');
         const gridRepel = document.querySelector('.grid-repel');
-        const gridRect = gridBg.getBoundingClientRect();
 
-        // Track mouse movement over the grid area
         document.addEventListener('mousemove', (e) => {
             const mouseX = e.clientX;
             const mouseY = e.clientY;
-            
-            // Check if mouse is over the grid area
             const rect = gridBg.getBoundingClientRect();
-            const isOverGrid = mouseX >= rect.left && mouseX <= rect.right && 
-                              mouseY >= rect.top && mouseY <= rect.bottom;
+            const isOverGrid = mouseX >= rect.left && mouseX <= rect.right &&
+                mouseY >= rect.top && mouseY <= rect.bottom;
 
             if (isOverGrid) {
-                // Calculate relative position within grid
                 const relativeX = ((mouseX - rect.left) / rect.width) * 100;
                 const relativeY = ((mouseY - rect.top) / rect.height) * 100;
-                
-                // Calculate distance from center for repel effect
-                const centerX = 50;
-                const centerY = 50;
-                const deltaX = relativeX - centerX;
-                const deltaY = relativeY - centerY;
+                const centerX = 50, centerY = 50;
+                const deltaX = relativeX - centerX, deltaY = relativeY - centerY;
                 const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                
-                // Create repel effect - scale and rotate based on mouse position
                 const repelStrength = Math.min(distance / 50, 1.5);
                 const scale = 1 + (repelStrength * 0.08);
-                const rotateX = (deltaY / 100) * 2;
-                const rotateY = (deltaX / 100) * -2;
-                
-                // Apply transform to create repel effect
+                const rotateX = (deltaY / 100) * 2, rotateY = (deltaX / 100) * -2;
+
                 gridBg.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
                 gridBg.style.filter = `brightness(${1 + repelStrength * 0.1})`;
-                
-                // Update repel overlay position
                 gridRepel.style.setProperty('--mouse-x', relativeX + '%');
                 gridRepel.style.setProperty('--mouse-y', relativeY + '%');
                 gridRepel.classList.add('active');
             } else {
-                // Reset when mouse leaves grid area
                 gridBg.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
                 gridBg.style.filter = 'brightness(1)';
                 gridRepel.classList.remove('active');
