@@ -577,7 +577,14 @@
                         const date = frontmatter.date || '';
                         const summary = frontmatter.summary || '';
                         
-                        console.log(`Project ${slug}:`, { title, date, summary, frontmatter });
+                        // Debug: log what we got
+                        console.log(`Project ${slug}:`, {
+                            title,
+                            date,
+                            summary,
+                            frontmatter,
+                            rawMarkdown: markdown.substring(0, 150)
+                        });
                         
                         // Create project item HTML
                         const li = document.createElement('li');
