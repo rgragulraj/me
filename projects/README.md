@@ -20,7 +20,7 @@ This folder contains all project markdown files.
 
 4. Add the slug to `projects/index.json`:
    ```json
-   ["example", "my-robot"]
+   ["lerobot", "my-robot"]
    ```
 
 That's it! The project will automatically appear on the projects index page and be accessible at `projects/project.html?slug=<slug>`.
