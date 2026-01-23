@@ -522,23 +522,28 @@
 
         // Parse frontmatter from markdown content
         function parseFrontmatter(markdown) {
-            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+            // Try to match frontmatter block - handle optional blank line after closing ---
+            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n\s*([\s\S]*)$/;
             const match = markdown.match(frontmatterRegex);
             
             if (!match) {
+                console.warn('No frontmatter found in markdown. Content:', markdown.substring(0, 200));
                 return { frontmatter: {}, body: markdown };
             }
             
-            const frontmatterText = match[1];
+            const frontmatterText = match[1].trim();
             const body = match[2];
             const frontmatter = {};
             
             // Parse YAML-like frontmatter (simple key: value pairs)
             frontmatterText.split('\n').forEach(line => {
-                const colonIndex = line.indexOf(':');
+                const trimmedLine = line.trim();
+                if (!trimmedLine) return; // Skip empty lines
+                
+                const colonIndex = trimmedLine.indexOf(':');
                 if (colonIndex > 0) {
-                    const key = line.substring(0, colonIndex).trim();
-                    let value = line.substring(colonIndex + 1).trim();
+                    const key = trimmedLine.substring(0, colonIndex).trim();
+                    let value = trimmedLine.substring(colonIndex + 1).trim();
                     // Remove quotes if present
                     if ((value.startsWith('"') && value.endsWith('"')) || 
                         (value.startsWith("'") && value.endsWith("'"))) {
@@ -548,6 +553,7 @@
                 }
             });
             
+            console.log('Parsed frontmatter:', frontmatter);
             return { frontmatter, body };
         }
 
@@ -571,6 +577,8 @@
                         const date = frontmatter.date || '';
                         const summary = frontmatter.summary || '';
                         
+                        console.log(`Project ${slug}:`, { title, date, summary, frontmatter });
+                        
                         // Create project item HTML
                         const li = document.createElement('li');
                         li.className = 'project-item';
@@ -578,9 +586,9 @@
                             <div class="project-box">
                                 <div class="project-header">
                                     <a href="projects/project.html?slug=${slug}" class="project-link">${title}</a>
-                                    <span class="project-date">${date}</span>
+                                    ${date ? `<span class="project-date">${date}</span>` : ''}
                                 </div>
-                                <p class="project-desc">${summary}</p>
+                                ${summary ? `<p class="project-desc">${summary}</p>` : ''}
                             </div>
                         `;
                         
