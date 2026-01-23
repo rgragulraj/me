@@ -553,7 +553,6 @@
                 }
             });
             
-            console.log('Parsed frontmatter:', frontmatter);
             return { frontmatter, body };
         }
 
@@ -570,21 +569,27 @@
                 const projectPromises = slugs.map(async (slug) => {
                     try {
                         const mdResponse = await fetch(`projects/${slug}.md`);
+                        
+                        // Check if the file was found
+                        if (!mdResponse.ok) {
+                            console.error(`Failed to fetch projects/${slug}.md: ${mdResponse.status} ${mdResponse.statusText}`);
+                            console.error(`Make sure ${slug}.md exists in the projects/ folder and is committed to GitHub.`);
+                            return null;
+                        }
+                        
                         const markdown = await mdResponse.text();
+                        
+                        // Check if we got an HTML error page instead of markdown
+                        if (markdown.trim().startsWith('<!DOCTYPE html>') || markdown.trim().startsWith('<html')) {
+                            console.error(`Received HTML instead of markdown for ${slug}.md. File may not exist on GitHub Pages.`);
+                            return null;
+                        }
+                        
                         const { frontmatter } = parseFrontmatter(markdown);
                         
                         const title = frontmatter.title || slug;
                         const date = frontmatter.date || '';
                         const summary = frontmatter.summary || '';
-                        
-                        // Debug: log what we got
-                        console.log(`Project ${slug}:`, {
-                            title,
-                            date,
-                            summary,
-                            frontmatter,
-                            rawMarkdown: markdown.substring(0, 150)
-                        });
                         
                         // Create project item HTML
                         const li = document.createElement('li');
