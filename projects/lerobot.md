@@ -1,16 +1,5 @@
 ---
 title: "LeRobot Project"
-date: "Nov 2024 - Dec 2024"
-summary: "Template project — duplicate this file and edit for each new project."
+date: "ongoing"
+summary: "Built a 6-DOF SO-101 open-source robotic manipulator using LeRobot for affordable hardware control via teleoperation and imitation learning. Implemented AI policies for real-world tasks like object pushing, training diffusion models for seamless integration and policy deployment."
 ---
-
-Template project — duplicate `projects/lerobot.md` and edit for each new project.
-
-This is the full project description that will be shown on the project detail page. You can write as much as you want here using Markdown:
-
-- **Bold text**
-- *Italic text*
-- Lists
-- Code blocks
-- Images
-- And more!
