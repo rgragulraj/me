@@ -372,23 +372,31 @@
     <script>
         // Parse frontmatter from markdown content
         function parseFrontmatter(markdown) {
-            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+            // Try to match frontmatter block - handle optional blank line after closing ---
+            const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n\s*([\s\S]*)$/;
             const match = markdown.match(frontmatterRegex);
             
             if (!match) {
+                // Only warn if it's actually markdown content, not an HTML error page
+                if (!markdown.trim().startsWith('<!DOCTYPE html>') && !markdown.trim().startsWith('<html')) {
+                    console.warn('No frontmatter found in markdown. Content:', markdown.substring(0, 200));
+                }
                 return { frontmatter: {}, body: markdown };
             }
             
-            const frontmatterText = match[1];
+            const frontmatterText = match[1].trim();
             const body = match[2];
             const frontmatter = {};
             
             // Parse YAML-like frontmatter (simple key: value pairs)
             frontmatterText.split('\n').forEach(line => {
-                const colonIndex = line.indexOf(':');
+                const trimmedLine = line.trim();
+                if (!trimmedLine) return; // Skip empty lines
+                
+                const colonIndex = trimmedLine.indexOf(':');
                 if (colonIndex > 0) {
-                    const key = line.substring(0, colonIndex).trim();
-                    let value = line.substring(colonIndex + 1).trim();
+                    const key = trimmedLine.substring(0, colonIndex).trim();
+                    let value = trimmedLine.substring(colonIndex + 1).trim();
                     // Remove quotes if present
                     if ((value.startsWith('"') && value.endsWith('"')) || 
                         (value.startsWith("'") && value.endsWith("'"))) {
@@ -414,7 +422,25 @@
             
             try {
                 const response = await fetch(`${slug}.md`);
+                
+                // Check if the file was found
+                if (!response.ok) {
+                    console.error(`Failed to fetch ${slug}.md: ${response.status} ${response.statusText}`);
+                    document.getElementById('projectTitle').textContent = 'Project Not Found';
+                    document.getElementById('projectContent').innerHTML = `<p class="error">Failed to load project: ${response.status} ${response.statusText}. Make sure ${slug}.md exists in the projects/ folder.</p>`;
+                    return;
+                }
+                
                 const markdown = await response.text();
+                
+                // Check if we got an HTML error page instead of markdown
+                if (markdown.trim().startsWith('<!DOCTYPE html>') || markdown.trim().startsWith('<html')) {
+                    console.error(`Received HTML instead of markdown for ${slug}.md. File may not exist on GitHub Pages.`);
+                    document.getElementById('projectTitle').textContent = 'Project Not Found';
+                    document.getElementById('projectContent').innerHTML = `<p class="error">File ${slug}.md not found. Make sure it exists in the projects/ folder and is committed to GitHub.</p>`;
+                    return;
+                }
+                
                 const { frontmatter, body } = parseFrontmatter(markdown);
                 
                 // Set title and heading
@@ -433,7 +459,7 @@
             } catch (error) {
                 console.error('Error loading project:', error);
                 document.getElementById('projectTitle').textContent = 'Project Not Found';
-                document.getElementById('projectContent').innerHTML = '<p class="error">Error loading project. Please ensure the site is served over HTTP.</p>';
+                document.getElementById('projectContent').innerHTML = `<p class="error">Error loading project: ${error.message}. Please ensure the site is served over HTTP.</p>`;
             }
         }
 
