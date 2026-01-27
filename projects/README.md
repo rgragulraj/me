@@ -16,12 +16,12 @@ Each project lives in its own folder under `projects/`. The folder holds the pro
    title: "Your Project Title"
    date: "Nov 2024 - Dec 2024"
    summary: "A short one- or two-line summary shown on the projects index."
-   image: "hero.jpg"
+   image: "card.jpg"
    ---
    ```
    
    - `title`, `date`, and `summary` are required for the index page.
-   - `image` is optional. If provided, it should be the filename of an image in the project folder (e.g., `"hero.jpg"`). The image will be displayed on the projects index page.
+   - `image` is optional. Filename of an image in the project folder shown on the **projects index** (projectshome) card.
 
 4. Write your full project description below the frontmatter using Markdown.
 
@@ -50,13 +50,14 @@ projects/
 - **`<slug>/<slug>.md`** – Required. One markdown file per project with frontmatter + content.
 - **`<slug>/*`** – Optional. Store images, PDFs, or other assets here. Reference them in markdown as `./image.png` or `image.png`; they will be loaded from the project folder.
 
-## Referencing Assets in Markdown
+## Images and assets in the project page
 
-Inside your project markdown, use relative paths for assets in the same folder:
+Add images anywhere in your project markdown using standard syntax. Use relative paths (e.g. `./file.jpg` or `file.jpg`); they resolve to the project folder.
 
 ```markdown
-![Robot setup](./setup.jpg)
-[Download report](./report.pdf)
+![Robot setup](./vellai_kunjan_2.jpg)
+
+Your project description here...
 ```
 
-These resolve to `projects/<slug>/setup.jpg` and `projects/<slug>/report.pdf` on the project page.
+The **first image** in the body is shown large (hero-style) at the top of the project page. Other images and links (e.g. `[Download PDF](./report.pdf)`) use the same relative paths and work as usual.
