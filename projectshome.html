@@ -174,6 +174,10 @@
 
         .project-box {
             flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1.5rem;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -189,12 +193,23 @@
             transform: translateY(-1px);
         }
 
+        .project-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .project-image-wrap {
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
         .project-image {
             width: 100%;
-            max-height: 200px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 1rem;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -440,7 +455,14 @@
             }
 
             .project-box {
+                flex-direction: column;
                 padding: 1rem 1.25rem;
+            }
+
+            .project-image-wrap {
+                width: 120px;
+                height: 120px;
+                align-self: center;
             }
 
             .grid-bg {
@@ -611,12 +633,14 @@
                         li.className = 'project-item';
                         li.innerHTML = `
                             <div class="project-box">
-                                ${image ? `<img src="projects/${slug}/${image}" alt="${title}" class="project-image" onerror="this.style.display='none'">` : ''}
-                                <div class="project-header">
-                                    <a href="projects/project.html?slug=${slug}" class="project-link">${title}</a>
-                                    ${date ? `<span class="project-date">${date}</span>` : ''}
+                                <div class="project-body">
+                                    <div class="project-header">
+                                        <a href="projects/project.html?slug=${slug}" class="project-link">${title}</a>
+                                        ${date ? `<span class="project-date">${date}</span>` : ''}
+                                    </div>
+                                    ${summary ? `<p class="project-desc">${summary}</p>` : ''}
                                 </div>
-                                ${summary ? `<p class="project-desc">${summary}</p>` : ''}
+                                ${image ? `<div class="project-image-wrap"><img src="projects/${slug}/${image}" alt="${title}" class="project-image" onerror="this.parentElement.style.display='none'"></div>` : ''}
                             </div>
                         `;
                         
