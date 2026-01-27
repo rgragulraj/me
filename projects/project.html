@@ -421,13 +421,13 @@
             }
             
             try {
-                const response = await fetch(`${slug}.md`);
+                const response = await fetch(`${slug}/${slug}.md`);
                 
                 // Check if the file was found
                 if (!response.ok) {
-                    console.error(`Failed to fetch ${slug}.md: ${response.status} ${response.statusText}`);
+                    console.error(`Failed to fetch ${slug}/${slug}.md: ${response.status} ${response.statusText}`);
                     document.getElementById('projectTitle').textContent = 'Project Not Found';
-                    document.getElementById('projectContent').innerHTML = `<p class="error">Failed to load project: ${response.status} ${response.statusText}. Make sure ${slug}.md exists in the projects/ folder.</p>`;
+                    document.getElementById('projectContent').innerHTML = `<p class="error">Failed to load project: ${response.status} ${response.statusText}. Make sure ${slug}/${slug}.md exists in the projects/ folder.</p>`;
                     return;
                 }
                 
@@ -435,9 +435,9 @@
                 
                 // Check if we got an HTML error page instead of markdown
                 if (markdown.trim().startsWith('<!DOCTYPE html>') || markdown.trim().startsWith('<html')) {
-                    console.error(`Received HTML instead of markdown for ${slug}.md. File may not exist on GitHub Pages.`);
+                    console.error(`Received HTML instead of markdown for ${slug}/${slug}.md. File may not exist on GitHub Pages.`);
                     document.getElementById('projectTitle').textContent = 'Project Not Found';
-                    document.getElementById('projectContent').innerHTML = `<p class="error">File ${slug}.md not found. Make sure it exists in the projects/ folder and is committed to GitHub.</p>`;
+                    document.getElementById('projectContent').innerHTML = `<p class="error">File ${slug}/${slug}.md not found. Make sure it exists in the projects/ folder and is committed to GitHub.</p>`;
                     return;
                 }
                 
@@ -450,7 +450,19 @@
                 
                 // Render markdown body
                 if (typeof marked !== 'undefined') {
-                    const html = marked.parse(body);
+                    let html = marked.parse(body);
+                    // Rewrite relative img src and href to project folder (e.g. image.png -> lerobot/image.png)
+                    const base = slug + '/';
+                    html = html.replace(/<img([^>]*)\ssrc="([^"]*)"/gi, (match, attrs, src) => {
+                        if (!src || /^(https?:|\/|#)/.test(src.trim())) return match;
+                        const path = src.startsWith('./') ? src.slice(2) : src;
+                        return '<img' + attrs + ' src="' + base + path + '"';
+                    });
+                    html = html.replace(/<a([^>]*)\shref="([^"]*)"/gi, (match, attrs, href) => {
+                        if (!href || /^(https?:|\/|#|mailto:)/.test(href.trim())) return match;
+                        const path = href.startsWith('./') ? href.slice(2) : href;
+                        return '<a' + attrs + ' href="' + base + path + '"';
+                    });
                     document.getElementById('projectContent').innerHTML = html;
                 } else {
                     // Fallback if marked.js hasn't loaded

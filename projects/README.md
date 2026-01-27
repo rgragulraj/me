@@ -1,13 +1,16 @@
 # Projects
 
-This folder contains all project markdown files.
+Each project lives in its own folder under `projects/`. The folder holds the project markdown file and any assets (images, etc.).
 
 ## Adding a New Project
 
-1. Create a new markdown file: `projects/<slug>.md`
-   - Use a simple slug (e.g., `my-robot.md`, `web-app.md`)
-   
-2. Add frontmatter at the top:
+1. Create a project folder: `projects/<slug>/`
+   - Use a simple slug (e.g., `lerobot`, `my-robot`, `web-app`).
+
+2. Create the markdown file: `projects/<slug>/<slug>.md`
+   - Example: `projects/lerobot/lerobot.md`
+
+3. Add frontmatter at the top:
    ```markdown
    ---
    title: "Your Project Title"
@@ -16,17 +19,40 @@ This folder contains all project markdown files.
    ---
    ```
 
-3. Write your full project description below the frontmatter using Markdown.
+4. Write your full project description below the frontmatter using Markdown.
 
-4. Add the slug to `projects/index.json`:
+5. Add the slug to `projects/index.json`:
    ```json
    ["lerobot", "my-robot"]
    ```
 
-That's it! The project will automatically appear on the projects index page and be accessible at `projects/project.html?slug=<slug>`.
+That's it! The project will appear on the projects index page and be accessible at `projects/project.html?slug=<slug>`.
 
-## File Structure
+## Project Folder Structure
 
-- `index.json` - List of project slugs (filename without `.md`)
-- `<slug>.md` - One markdown file per project with frontmatter + content
-- `project.html` - Generic page that renders any project's markdown
+```
+projects/
+  index.json           # List of project slugs
+  project.html         # Generic page that renders any project's markdown
+  lerobot/
+    lerobot.md         # Project content (required)
+    image.png          # Optional: images, diagrams, etc.
+    other-assets/      # Optional: subfolders for assets
+  my-robot/
+    my-robot.md
+    ...
+```
+
+- **`<slug>/<slug>.md`** – Required. One markdown file per project with frontmatter + content.
+- **`<slug>/*`** – Optional. Store images, PDFs, or other assets here. Reference them in markdown as `./image.png` or `image.png`; they will be loaded from the project folder.
+
+## Referencing Assets in Markdown
+
+Inside your project markdown, use relative paths for assets in the same folder:
+
+```markdown
+![Robot setup](./setup.jpg)
+[Download report](./report.pdf)
+```
+
+These resolve to `projects/<slug>/setup.jpg` and `projects/<slug>/report.pdf` on the project page.

@@ -568,12 +568,12 @@
                 // Fetch and render each project
                 const projectPromises = slugs.map(async (slug) => {
                     try {
-                        const mdResponse = await fetch(`projects/${slug}.md`);
+                        const mdResponse = await fetch(`projects/${slug}/${slug}.md`);
                         
                         // Check if the file was found
                         if (!mdResponse.ok) {
-                            console.error(`Failed to fetch projects/${slug}.md: ${mdResponse.status} ${mdResponse.statusText}`);
-                            console.error(`Make sure ${slug}.md exists in the projects/ folder and is committed to GitHub.`);
+                            console.error(`Failed to fetch projects/${slug}/${slug}.md: ${mdResponse.status} ${mdResponse.statusText}`);
+                            console.error(`Make sure ${slug}/${slug}.md exists in the projects/ folder and is committed to GitHub.`);
                             return null;
                         }
                         
@@ -581,7 +581,7 @@
                         
                         // Check if we got an HTML error page instead of markdown
                         if (markdown.trim().startsWith('<!DOCTYPE html>') || markdown.trim().startsWith('<html')) {
-                            console.error(`Received HTML instead of markdown for ${slug}.md. File may not exist on GitHub Pages.`);
+                            console.error(`Received HTML instead of markdown for ${slug}/${slug}.md. File may not exist on GitHub Pages.`);
                             return null;
                         }
                         
