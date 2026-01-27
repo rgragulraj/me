@@ -129,9 +129,18 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            align-items: center;
         }
 
-        h1 {
+        .experience-inner {
+            max-width: 700px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .main-content h1 {
             font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
             font-size: 3.5rem;
             font-weight: 300;
@@ -151,7 +160,6 @@
         /* Experience blocks */
         .experience-list {
             list-style: none;
-            max-width: 700px;
         }
 
         .experience-item {
@@ -346,12 +354,12 @@
             .main-content {
                 margin-left: 0;
                 padding: 2.5rem 1.5rem;
-                align-items: flex-start;
-                justify-content: center;
+                align-items: center;
+                justify-content: flex-start;
                 min-height: 100vh;
             }
 
-            h1 {
+            .main-content h1 {
                 font-size: 2.2rem;
                 margin-bottom: 0.35rem;
                 text-align: left;
@@ -406,10 +414,11 @@
     </aside>
 
     <main class="main-content">
-        <h1>Experience</h1>
-        <p class="page-subtitle">Ragul Raj</p>
+        <div class="experience-inner">
+            <h1>Experience</h1>
+            <p class="page-subtitle">Ragul Raj</p>
 
-        <ul class="experience-list">
+            <ul class="experience-list">
             <li class="experience-item">
                 <h2 class="experience-title">ASU Innovation Hub</h2>
                 <div class="experience-meta">Fabrication &amp; Prototyping Support, 2024 – Present</div>
@@ -428,6 +437,7 @@
                 <p class="experience-desc">[Description of the role and what you did. Use the same structure as above—title, role/dates, then one or two description paragraphs with optional links.]</p>
             </li>
         </ul>
+        </div>
     </main>
 
     <script>
