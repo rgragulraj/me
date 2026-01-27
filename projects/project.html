@@ -118,9 +118,17 @@
             font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
             font-size: 3.5rem;
             font-weight: 300;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
             color: #fff;
+        }
+
+        .project-date {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
         }
 
         .project-content {
@@ -364,6 +372,7 @@
 
     <main class="main-content">
         <h1 id="projectTitle">Loading...</h1>
+        <p class="project-date" id="projectDate"></p>
         <div class="project-content" id="projectContent">
             <p class="loading">Loading project content...</p>
         </div>
@@ -414,8 +423,10 @@
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
             
+            const dateEl = document.getElementById('projectDate');
             if (!slug) {
                 document.getElementById('projectTitle').textContent = 'Project Not Found';
+                dateEl.style.display = 'none';
                 document.getElementById('projectContent').innerHTML = '<p class="error">No project slug specified in URL.</p>';
                 return;
             }
@@ -427,6 +438,7 @@
                 if (!response.ok) {
                     console.error(`Failed to fetch ${slug}/${slug}.md: ${response.status} ${response.statusText}`);
                     document.getElementById('projectTitle').textContent = 'Project Not Found';
+                    dateEl.style.display = 'none';
                     document.getElementById('projectContent').innerHTML = `<p class="error">Failed to load project: ${response.status} ${response.statusText}. Make sure ${slug}/${slug}.md exists in the projects/ folder.</p>`;
                     return;
                 }
@@ -437,16 +449,24 @@
                 if (markdown.trim().startsWith('<!DOCTYPE html>') || markdown.trim().startsWith('<html')) {
                     console.error(`Received HTML instead of markdown for ${slug}/${slug}.md. File may not exist on GitHub Pages.`);
                     document.getElementById('projectTitle').textContent = 'Project Not Found';
+                    dateEl.style.display = 'none';
                     document.getElementById('projectContent').innerHTML = `<p class="error">File ${slug}/${slug}.md not found. Make sure it exists in the projects/ folder and is committed to GitHub.</p>`;
                     return;
                 }
                 
                 const { frontmatter, body } = parseFrontmatter(markdown);
                 
-                // Set title and heading
+                // Set title, date, and heading
                 const title = frontmatter.title || slug;
+                const date = frontmatter.date || '';
                 document.title = `${title} - Ragul Raj`;
                 document.getElementById('projectTitle').textContent = title;
+                if (date) {
+                    dateEl.textContent = date;
+                    dateEl.style.display = '';
+                } else {
+                    dateEl.style.display = 'none';
+                }
                 
                 // Render markdown body
                 if (typeof marked !== 'undefined') {
@@ -471,6 +491,7 @@
             } catch (error) {
                 console.error('Error loading project:', error);
                 document.getElementById('projectTitle').textContent = 'Project Not Found';
+                document.getElementById('projectDate').style.display = 'none';
                 document.getElementById('projectContent').innerHTML = `<p class="error">Error loading project: ${error.message}. Please ensure the site is served over HTTP.</p>`;
             }
         }
