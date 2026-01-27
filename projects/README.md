@@ -16,8 +16,12 @@ Each project lives in its own folder under `projects/`. The folder holds the pro
    title: "Your Project Title"
    date: "Nov 2024 - Dec 2024"
    summary: "A short one- or two-line summary shown on the projects index."
+   image: "hero.jpg"
    ---
    ```
+   
+   - `title`, `date`, and `summary` are required for the index page.
+   - `image` is optional. If provided, it should be the filename of an image in the project folder (e.g., `"hero.jpg"`). The image will be displayed on the projects index page.
 
 4. Write your full project description below the frontmatter using Markdown.
 

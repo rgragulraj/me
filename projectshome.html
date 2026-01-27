@@ -189,6 +189,20 @@
             transform: translateY(-1px);
         }
 
+        .project-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-box:hover .project-image {
+            opacity: 1;
+        }
+
         .project-header {
             display: flex;
             flex-direction: column;
@@ -590,12 +604,14 @@
                         const title = frontmatter.title || slug;
                         const date = frontmatter.date || '';
                         const summary = frontmatter.summary || '';
+                        const image = frontmatter.image || '';
                         
                         // Create project item HTML
                         const li = document.createElement('li');
                         li.className = 'project-item';
                         li.innerHTML = `
                             <div class="project-box">
+                                ${image ? `<img src="projects/${slug}/${image}" alt="${title}" class="project-image" onerror="this.style.display='none'">` : ''}
                                 <div class="project-header">
                                     <a href="projects/project.html?slug=${slug}" class="project-link">${title}</a>
                                     ${date ? `<span class="project-date">${date}</span>` : ''}
