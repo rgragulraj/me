@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ragul Raj</title>
+    <title>Education - Ragul Raj</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,55 +130,78 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            align-items: center;
         }
 
-        h1 {
+        .education-inner {
+            max-width: 700px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .main-content h1 {
             font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
             font-size: 3.5rem;
             font-weight: 300;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
             color: #fff;
         }
 
-
-
-        .intro-section {
+        .page-subtitle {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 3rem;
-            max-width: 600px;
         }
 
-        .connect-line {
-            margin-top: 0.5rem;
-            margin-bottom: 0;
-        }
-
-        p {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8;
-        }
-
-        h2 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 2rem;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        ul {
+        /* Education blocks */
+        .education-list {
             list-style: none;
         }
 
-        li {
-            margin-bottom: 1.25rem;
+        .education-item {
+            margin-bottom: 3rem;
         }
 
-        a {
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.35rem;
+        }
+
+        .education-meta {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem;
+        }
+
+        .education-desc {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .education-desc:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-desc a {
             color: #fff;
             text-decoration: none;
             position: relative;
@@ -187,7 +210,7 @@
             display: inline-block;
         }
 
-        a::after {
+        .education-desc a::after {
             content: '';
             position: absolute;
             bottom: -4px;
@@ -198,12 +221,20 @@
             transition: width 0.3s ease;
         }
 
-        a:hover {
+        .education-desc a:hover {
             color: #ffd700;
         }
 
-        a:hover::after {
+        .education-desc a:hover::after {
             width: 100%;
+        }
+
+        p {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
         }
 
         /* Grid Background Effect */
@@ -213,7 +244,7 @@
             right: 0;
             width: 60%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -227,7 +258,6 @@
             transform-origin: var(--mouse-x, 50%) var(--mouse-y, 50%);
         }
 
-        /* Grid repel effect overlay */
         .grid-repel {
             position: fixed;
             top: 0;
@@ -236,8 +266,8 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                transparent 0%, 
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                transparent 0%,
                 transparent 30%,
                 rgba(255, 255, 255, 0.05) 50%,
                 transparent 70%);
@@ -283,7 +313,6 @@
                 flex-direction: column;
             }
 
-            /* Menu Button - Show on mobile */
             .menu-button {
                 display: block;
             }
@@ -292,12 +321,10 @@
                 display: none;
             }
 
-            /* Sidebar Overlay - Show on mobile */
             .sidebar-overlay {
                 display: block;
             }
 
-            /* Sidebar - Hidden by default on mobile, slides in when toggled */
             .sidebar {
                 width: 250px;
                 height: 100vh;
@@ -328,20 +355,28 @@
             .main-content {
                 margin-left: 0;
                 padding: 2.5rem 1.5rem;
-                align-items: flex-start;
-                justify-content: center;
+                align-items: center;
+                justify-content: flex-start;
                 min-height: 100vh;
             }
 
-            h1 {
+            .main-content h1 {
                 font-size: 2.2rem;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.35rem;
                 text-align: left;
             }
 
-            .intro-section {
-                margin-left: auto;
-                margin-right: auto;
+            .page-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .education-item {
+                margin-bottom: 2.5rem;
+            }
+
+            .education-title {
+                font-size: 1.3rem;
             }
 
             .grid-bg {
@@ -359,40 +394,53 @@
 <body>
     <div class="grid-bg"></div>
     <div class="grid-repel"></div>
-    
+
     <button class="menu-button" id="menuButton" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
     </button>
-    
+
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
+
     <aside class="sidebar" id="sidebar">
         <nav>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link active">OVERVIEW</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">OVERVIEW</a></li>
                 <li class="nav-item"><a href="projectshome.html" class="nav-link">PROJECTS</a></li>
                 <li class="nav-item"><a href="experience.html" class="nav-link">EXPERIENCE</a></li>
-                <li class="nav-item"><a href="education.html" class="nav-link">EDUCATION</a></li>
-
+                <li class="nav-item"><a href="education.html" class="nav-link active">EDUCATION</a></li>
             </ul>
         </nav>
     </aside>
 
     <main class="main-content">
-        <h1>Ragul Raj</h1>
-        <section class="intro-section">
-            <p>I build software and hardware systems with a focus on real-world use. My work spans robotics, embedded systems, and small software projects that support or interact with physical systems.</p>
-            
-            <p>Currently an undergraduate robotics student at ASU, supporting fabrication and prototyping projects at the Innovation Hub. I help students bring ideas to life by maintaining and troubleshooting prototyping equipment and conducting hands-on workshops.</p>
-            
-            <p class="connect-line"><strong>Connect:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:your.email@gmail.com">Gmail</a></p>
-        </section>
+        <div class="education-inner">
+            <h1>Education</h1>
+            <p class="page-subtitle">Ragul Raj</p>
+
+            <ul class="education-list">
+                <li class="education-item">
+                    <h2 class="education-title">Arizona State University</h2>
+                    <div class="education-meta">B.S. Robotics, 20XX – Present</div>
+                    <p class="education-desc">Undergraduate robotics student. [Add focus areas, relevant coursework, or highlights. You can link to the <a href="https://engineering.asu.edu/" target="_blank" rel="noopener noreferrer">Fulton Schools</a> or other resources.]</p>
+                    <p class="education-desc">[Optional second paragraph—clubs, projects, or activities tied to your degree.]</p>
+                </li>
+                <li class="education-item">
+                    <h2 class="education-title">[School or program name]</h2>
+                    <div class="education-meta">[DEGREE / PROGRAM], [YEAR – YEAR]</div>
+                    <p class="education-desc">[Description of the program, key courses, or achievements. Add <a href="#">links</a> as needed.]</p>
+                </li>
+                <li class="education-item">
+                    <h2 class="education-title">[School or program name]</h2>
+                    <div class="education-meta">[DEGREE / PROGRAM], [YEAR – YEAR]</div>
+                    <p class="education-desc">[Use the same structure—school, degree/dates, then one or two description paragraphs with optional links.]</p>
+                </li>
+            </ul>
+        </div>
     </main>
 
     <script>
-        // Mobile menu toggle functionality
         const menuButton = document.getElementById('menuButton');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -417,21 +465,17 @@
             }
         }
 
-        // Only open/close menu when clicking the button
         menuButton.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleSidebar();
         });
 
-        // Close menu when clicking overlay
         sidebarOverlay.addEventListener('click', (e) => {
             e.stopPropagation();
             closeSidebar();
         });
 
-        // Close sidebar when clicking on nav links (mobile only)
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
+        document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     toggleSidebar();
@@ -439,49 +483,34 @@
             });
         });
 
-        // Interactive grid repel effect
         const gridBg = document.querySelector('.grid-bg');
         const gridRepel = document.querySelector('.grid-repel');
-        const gridRect = gridBg.getBoundingClientRect();
 
-        // Track mouse movement over the grid area
         document.addEventListener('mousemove', (e) => {
             const mouseX = e.clientX;
             const mouseY = e.clientY;
-            
-            // Check if mouse is over the grid area
             const rect = gridBg.getBoundingClientRect();
-            const isOverGrid = mouseX >= rect.left && mouseX <= rect.right && 
-                              mouseY >= rect.top && mouseY <= rect.bottom;
+            const isOverGrid = mouseX >= rect.left && mouseX <= rect.right &&
+                mouseY >= rect.top && mouseY <= rect.bottom;
 
             if (isOverGrid) {
-                // Calculate relative position within grid
                 const relativeX = ((mouseX - rect.left) / rect.width) * 100;
                 const relativeY = ((mouseY - rect.top) / rect.height) * 100;
-                
-                // Calculate distance from center for repel effect
                 const centerX = 50;
                 const centerY = 50;
                 const deltaX = relativeX - centerX;
                 const deltaY = relativeY - centerY;
                 const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                
-                // Create repel effect - scale and rotate based on mouse position
                 const repelStrength = Math.min(distance / 50, 1.5);
                 const scale = 1 + (repelStrength * 0.08);
                 const rotateX = (deltaY / 100) * 2;
                 const rotateY = (deltaX / 100) * -2;
-                
-                // Apply transform to create repel effect
                 gridBg.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
                 gridBg.style.filter = `brightness(${1 + repelStrength * 0.1})`;
-                
-                // Update repel overlay position
                 gridRepel.style.setProperty('--mouse-x', relativeX + '%');
                 gridRepel.style.setProperty('--mouse-y', relativeY + '%');
                 gridRepel.classList.add('active');
             } else {
-                // Reset when mouse leaves grid area
                 gridBg.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
                 gridBg.style.filter = 'brightness(1)';
                 gridRepel.classList.remove('active');
