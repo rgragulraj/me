@@ -172,6 +172,17 @@
             z-index: 2;
         }
 
+        .project-item::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: calc(1.5rem + 2px);
+            width: calc(2rem - 6px);
+            height: 0;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.45);
+            z-index: 1;
+        }
+
         .project-box {
             flex: 1;
             display: flex;
@@ -457,6 +468,11 @@
 
             .project-item::before {
                 top: 1.25rem;
+            }
+
+            .project-item::after {
+                top: calc(1.25rem + 2px);
+                width: calc(1.75rem - 6px);
             }
 
             .project-box {
