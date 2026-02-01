@@ -24,10 +24,10 @@
             display: flex;
         }
 
-        /* Sidebar Navigation - top padding matches main-content so "OVERVIEW" aligns with "Ragul Raj" (4rem - 0.5rem nav-link padding) */
+        /* Sidebar Navigation */
         .sidebar {
             width: 200px;
-            padding: 3.5rem 1.5rem 2rem;
+            padding: 0 1.5rem 2rem;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             height: 100vh;
@@ -74,6 +74,10 @@
 
         .nav-link.active::before {
             opacity: 1;
+        }
+
+        .nav-item:first-child .nav-link {
+            padding-top: 0;
         }
 
         /* Menu Button - Hidden by default, shown on mobile */
@@ -126,7 +130,7 @@
         .main-content {
             margin-left: 200px;
             flex: 1;
-            padding: 4rem 5rem;
+            padding: 0 5rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -255,12 +259,12 @@
         @media (max-width: 1024px) {
             .sidebar {
                 width: 150px;
-                padding: 3.5rem 1rem 2rem;
+                padding: 0 1rem 2rem;
             }
 
             .main-content {
                 margin-left: 150px;
-                padding: 4rem 3rem;
+                padding: 0 3rem 4rem;
             }
 
             h1 {
@@ -302,7 +306,7 @@
                 width: 250px;
                 height: 100vh;
                 border-right: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 2rem 1.5rem;
+                padding: 0 1.5rem 2rem;
                 position: fixed;
                 left: -250px;
                 top: 0;
@@ -327,7 +331,7 @@
 
             .main-content {
                 margin-left: 0;
-                padding: 2.5rem 1.5rem;
+                padding: 0 1.5rem 2.5rem;
                 align-items: flex-start;
                 justify-content: center;
                 min-height: 100vh;
