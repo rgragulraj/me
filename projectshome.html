@@ -148,6 +148,45 @@
             max-width: 700px;
         }
 
+        .page-header {
+            max-width: 700px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .page-header h1 {
+            margin-bottom: 0;
+        }
+
+        .connect-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            font-size: 0.95rem;
+        }
+
+        .connect-line a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: opacity 0.3s ease;
+        }
+
+        .connect-line a:hover {
+            opacity: 0.8;
+        }
+
+        .connect-line .sep {
+            margin: 0 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            user-select: none;
+        }
+
         .project-list {
             list-style: none;
             max-width: 700px;
@@ -525,7 +564,10 @@
     </aside>
 
     <main class="main-content">
-        <h1>Projects</h1>
+        <header class="page-header">
+            <h1>Projects</h1>
+            <p class="connect-line"><a href="mailto:your.email@gmail.com">Gmail</a><span class="sep">·</span><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        </header>
         <ul class="project-list" id="projectList">
             <!-- Projects will be loaded here dynamically -->
         </ul>
