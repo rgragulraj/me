@@ -27,7 +27,7 @@
         /* Sidebar Navigation */
         .sidebar {
             width: 200px;
-            padding: 0 1.5rem 2rem;
+            padding: 2rem 1.5rem 2rem;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             height: 100vh;
@@ -76,10 +76,6 @@
             opacity: 1;
         }
 
-        .nav-item:first-child .nav-link {
-            padding-top: 0;
-        }
-
         /* Menu Button - Hidden by default, shown on mobile */
         .menu-button {
             display: none;
@@ -126,11 +122,11 @@
             opacity: 1;
         }
 
-        /* Main Content */
+        /* Main Content - 6rem top to align with sidebar and match spacing from top */
         .main-content {
             margin-left: 200px;
             flex: 1;
-            padding: 0 5rem 4rem;
+            padding: 6rem 5rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -260,12 +256,12 @@
         @media (max-width: 1024px) {
             .sidebar {
                 width: 150px;
-                padding: 0 1rem 2rem;
+                padding: 2rem 1rem 2rem;
             }
 
             .main-content {
                 margin-left: 150px;
-                padding: 0 3rem 4rem;
+                padding: 3rem 3rem;
             }
 
             h1 {
@@ -307,7 +303,7 @@
                 width: 250px;
                 height: 100vh;
                 border-right: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 0 1.5rem 2rem;
+                padding: 2rem 1.5rem 2rem;
                 position: fixed;
                 left: -250px;
                 top: 0;
@@ -332,7 +328,7 @@
 
             .main-content {
                 margin-left: 0;
-                padding: 0 1.5rem 2.5rem;
+                padding: 2.5rem 1.5rem;
                 align-items: flex-start;
                 justify-content: center;
                 min-height: 100vh;
