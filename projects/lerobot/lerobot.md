@@ -1,59 +1,78 @@
 ---
-title: "End-to-End Imitation Learning with LeRobot on a Custom SO-101 Manipulator"
+title: "End-to-End Imitation Learning with LeRobot (SO-101)"
 date: "November 2025 - Ongoing"
-summary: Teleoperated data collection and policy training using LeRobot on a self-assembled SO-101 arm with Xbox controller and smartphone camera.
+summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-101 arm, Xbox teleoperation, smartphone vision. Training ACT and Diffusion policies for dexterity tasks.
 ---
 
 ![LeRobot setup](./vellai_kunjan_2.jpg)
 
+# End-to-End Imitation Learning with LeRobot (SO-101)
+
+**Status:** Ongoing | **Stack:** Python, PyTorch, Hugging Face LeRobot, Ubuntu
+
 ## Abstract
 
-I'm running experiments on imitation learning for a robot arm using [LeRobot](https://github.com/huggingface/lerobot). I built a 6-DOF SO-101 arm and hooked it up to LeRobot. I use an Xbox controller to drive the arm and my phone as the camera. Everything runs on Ubuntu. This doc covers my setup, how I collect data, and how I train the arm.
+This project explores the democratization of robotic manipulation by implementing end-to-end imitation learning on low-cost, open-source hardware. Using a custom-fabricated **SO-101 6-DOF manipulator** and the **Hugging Face LeRobot** library, I am developing a pipeline to train policies (ACT, Diffusion) capable of performing dexterity tasks via vision-based teleoperation.
 
-## 1. Introduction
+## 1. System Architecture
 
-LeRobot is an open-source Python library from Hugging Face. It has models, datasets, and tools for robotics. I wanted to try it on cheap hardware: a SO-101 arm I built, an Xbox controller, and my phone camera.
+The system creates a closed-loop imitation learning pipeline. I chose the **SO-101** over the older SO-100 design for its improved structural rigidity and [e.g., cable management, better joint range].
 
-## 2. Materials and Methods
+### Hardware Stack
 
-### 2.1 Hardware
+- **Manipulator:** SO-101 6-DOF Arm (custom 3D printed, [PETG/PLA])
+- **Actuation:** [e.g., Feetech STS3215] serial bus servos
+- **Teleoperation:** Xbox Series X controller (mapped to joint velocity control)
+- **Vision:** Smartphone camera via [USB / DroidCam / Wi-Fi] ([X] Hz stream)
+- **Compute:** Ubuntu 22.04 [e.g., RTX 3060 or CPU-only]
 
-- **Arm:** SO-101 6-DOF (I built it from an open-source design)
-- **Control:** Xbox controller
-- **Camera:** Smartphone
-- **Computer:** Ubuntu Linux
+### Software Stack
 
-### 2.2 Software
-
-- **Framework:** [LeRobot](https://github.com/huggingface/lerobot)
+- **Framework:** [Hugging Face LeRobot](https://github.com/huggingface/lerobot) (built on PyTorch)
+- **Data Format:** LeRobotDataset (Parquet metadata + time-synced MP4)
 - **OS:** Ubuntu Linux
 
-LeRobot has a Robot interface that works with different hardware. It supports SO100-style arms. Data is stored in LeRobotDataset format (Parquet plus video or images).
+## 2. Methodology
 
-### 2.3 Data Collection
+### 2.1 Teleoperation & Data Collection
 
-I drive the arm with the Xbox controller and record what the phone camera sees. The data goes into LeRobotDataset format for training.
+To generate high-quality expert demonstrations, I implemented a leader-follower teleoperation scheme using an Xbox controller.
 
-### 2.4 Training
+- **Mapping:** Analog sticks control end-effector delta positions (x, y, z). Triggers control gripper state.
+- **Sync:** Images are captured at [30/60] FPS and synchronized with joint state vectors (position, velocity) to minimize drift between observation and action spaces.
 
-I train policies with LeRobot's imitation learning tools (ACT, Diffusion, VQ-BeT). I use the `lerobot-train` script with my dataset and policy settings.
+### 2.2 Policy Training
 
-## 3. Experiments
+I am benchmarking two state-of-the-art imitation learning algorithms:
 
-I'm working on:
+1. **ACT (Action Chunking with Transformers):** Uses a VAE to encode temporal action sequences.
+2. **Diffusion Policy:** Models the action distribution as a denoising process.
 
-1. **Teleoperation:** Mapping Xbox inputs to arm commands
-2. **Data collection:** Recording vision and actions together
-3. **Policy training:** Training on my demos
-4. **Deployment:** Running the trained policy on the real arm for tasks like pushing objects
+Example training configuration:
 
-## 4. Results and Discussion
+```yaml
+# Example Training Config
+training:
+  offline_steps: 80000
+  batch_size: 64
+  eval_freq: 5000
+policy:
+  type: "act"
+  n_action_steps: 100
+```
 
-*Ongoing.* I'll add results as I go. Right now I'm focused on getting stable data collection and policies that converge before trying real-world runs.
+## 3. Preliminary Results & Current Milestones
 
-## 5. Conclusion
+- **Teleoperation:** Real-time control with latency under [X] ms
+- **Dataset:** [X] episodes of pick-and-place (or object pushing) tasks collected
+- **Pipeline validation:** Data recording and LeRobotDataset export verified
+- **Current challenges:** Tuning PID values on shoulder joints to reduce jitter during the hold phase of collection
 
-LeRobot works with low-cost hardware. My setup (SO-101 arm, Xbox controller, phone camera) is cheap and lets me learn manipulation policies. I'll add numbers on success rates when I have them.
+## 4. Next Steps
+
+- Complete policy training runs and evaluate on real hardware
+- Add quantitative success rates and ablation studies
+- Record a short demo video or GIF of teleoperation and policy execution
 
 ## References
 
