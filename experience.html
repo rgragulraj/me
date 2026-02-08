@@ -155,6 +155,45 @@
             margin-bottom: 3rem;
         }
 
+        .page-header {
+            max-width: 700px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .page-header h1 {
+            margin-bottom: 0;
+        }
+
+        .connect-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            font-size: 0.95rem;
+        }
+
+        .connect-line a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: opacity 0.3s ease;
+        }
+
+        .connect-line a:hover {
+            opacity: 0.8;
+        }
+
+        .connect-line .sep {
+            margin: 0 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            user-select: none;
+        }
+
         /* Experience blocks */
         .experience-list {
             list-style: none;
@@ -412,9 +451,10 @@
 
     <main class="main-content">
         <div class="experience-inner">
-            <h1>Experience</h1>
-            <p class="connect-line"><a href="mailto:rgragulraj@gmail.com">Gmail</a><span class="sep">·</span><a href="https://www.linkedin.com/in/rgragulraj/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-
+            <header class="page-header">
+                <h1>Experience</h1>
+                <p class="connect-line"><a href="mailto:rgragulraj@gmail.com">Gmail</a><span class="sep">·</span><a href="https://www.linkedin.com/in/rgragulraj/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+            </header>
             <ul class="experience-list">
             <li class="experience-item">
                 <h2 class="experience-title">The Innovation Hub, Arizona State University</h2>
