@@ -130,15 +130,12 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            align-items: center;
         }
 
         .education-inner {
             max-width: 700px;
             width: 100%;
-            margin-left: auto;
             margin-right: auto;
-            text-align: left;
         }
 
         .main-content h1 {
@@ -171,22 +168,45 @@
             margin-bottom: 0;
         }
 
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
         .education-title {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
             color: #fff;
-            margin-bottom: 0.35rem;
+        }
+
+        .education-date {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: nowrap;
         }
 
         .education-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+        }
+
+        .education-gpa {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: nowrap;
         }
 
         .education-desc {
@@ -355,7 +375,6 @@
             .main-content {
                 margin-left: 0;
                 padding: 2.5rem 1.5rem;
-                align-items: center;
                 justify-content: flex-start;
                 min-height: 100vh;
             }
@@ -377,6 +396,11 @@
 
             .education-title {
                 font-size: 1.3rem;
+            }
+
+            .education-header,
+            .education-meta {
+                flex-wrap: wrap;
             }
 
             .grid-bg {
@@ -417,24 +441,24 @@
     <main class="main-content">
         <div class="education-inner">
             <h1>Education</h1>
-            <p class="page-subtitle">Ragul Raj</p>
-
             <ul class="education-list">
                 <li class="education-item">
-                    <h2 class="education-title">Arizona State University</h2>
-                    <div class="education-meta">B.S. Robotics, 20XX – Present</div>
-                    <p class="education-desc">Undergraduate robotics student. [Add focus areas, relevant coursework, or highlights. You can link to the <a href="https://engineering.asu.edu/" target="_blank" rel="noopener noreferrer">Fulton Schools</a> or other resources.]</p>
-                    <p class="education-desc">[Optional second paragraph—clubs, projects, or activities tied to your degree.]</p>
+                    <div class="education-header">
+                        <h2 class="education-title">B.S.E, Robotics</h2>
+                        <span class="education-date">May 2027</span>
+                    </div>
+                    <div class="education-meta">
+                        <span>Arizona State University, Tempe, AZ</span>
+                    </div>
                 </li>
                 <li class="education-item">
-                    <h2 class="education-title">[School or program name]</h2>
-                    <div class="education-meta">[DEGREE / PROGRAM], [YEAR – YEAR]</div>
-                    <p class="education-desc">[Description of the program, key courses, or achievements. Add <a href="#">links</a> as needed.]</p>
-                </li>
-                <li class="education-item">
-                    <h2 class="education-title">[School or program name]</h2>
-                    <div class="education-meta">[DEGREE / PROGRAM], [YEAR – YEAR]</div>
-                    <p class="education-desc">[Use the same structure—school, degree/dates, then one or two description paragraphs with optional links.]</p>
+                    <div class="education-header">
+                        <h2 class="education-title">SSVM World School (High School)</h2>
+                        <span class="education-date">May 2023</span>
+                    </div>
+                    <div class="education-meta">
+                        <span>Coimbatore, Tamil Nadu, India</span>
+                    </div>
                 </li>
             </ul>
         </div>
