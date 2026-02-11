@@ -6,10 +6,6 @@ summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-
 
 ![LeRobot setup](./vellai_kunjan_2.jpg)
 
-# Imitation Learning with LeRobot (SO-101)
-
-**November 2025 — Ongoing**
-
 ## Tech Stack / Platform
 
 Python · Hugging Face LeRobot · Ubuntu · SO-101 6-DOF Arm 
