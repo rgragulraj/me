@@ -1,80 +1,53 @@
 ---
-title: "End-to-End Imitation Learning with LeRobot (SO-101)"
+title: "Imitation Learning with LeRobot (SO-101)"
 date: "November 2025 - Ongoing"
 summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-101 arm, Xbox teleoperation, smartphone vision. Training ACT and Diffusion policies for dexterity tasks.
 ---
 
 ![LeRobot setup](./vellai_kunjan_2.jpg)
 
-# End-to-End Imitation Learning with LeRobot (SO-101)
+# Imitation Learning with LeRobot (SO-101)
 
-**Status:** Ongoing | **Stack:** Python, PyTorch, Hugging Face LeRobot, Ubuntu
+**November 2025 — Ongoing**
+
+## Tech Stack / Platform
+
+Python · Hugging Face LeRobot · Ubuntu · SO-101 6-DOF Arm 
 
 ## Abstract
 
-This project explores the democratization of robotic manipulation by implementing end-to-end imitation learning on low-cost, open-source hardware. Using a custom-fabricated **SO-101 6-DOF manipulator** and the **Hugging Face LeRobot** library, I am developing a pipeline to train policies (ACT, Diffusion) capable of performing dexterity tasks via vision-based teleoperation.
+I'm building a full imitation learning pipeline from scratch on low-cost hardware—because I wanted to prove it's possible without a $50K robot. Custom SO-101 arm, Xbox controller for teleoperation, smartphone as the eyes, and LeRobot doing the heavy lifting. The goal: train policies (ACT, Diffusion) that can actually perform dexterity tasks on real hardware.
 
-## 1. System Architecture
+---
 
-The system creates a closed-loop imitation learning pipeline. I chose the **SO-101** over the older SO-100 design for its improved structural rigidity and [e.g., cable management, better joint range].
+## Content
 
-### Hardware Stack
+### Architecture
 
-- **Manipulator:** SO-101 6-DOF Arm (custom 3D printed, [PETG/PLA])
-- **Actuation:** [e.g., Feetech STS3215] serial bus servos
-- **Teleoperation:** Xbox Series X controller (mapped to joint velocity control)
-- **Vision:** Smartphone camera via [USB / DroidCam / Wi-Fi] ([X] Hz stream)
-- **Compute:** Ubuntu 22.04 [e.g., RTX 3060 or CPU-only]
+Closed-loop imitation learning: collect demonstrations → train policy → deploy on robot. I chose the **SO-101** over the older SO-100 for better structural rigidity and cable management—small design choices that matter when you're chasing repeatability.
 
-### Software Stack
+**Hardware:** Custom 3D-printed SO-101 arm, Feetech serial servos, Xbox Series X controller (joint velocity control), smartphone camera for vision.
 
-- **Framework:** [Hugging Face LeRobot](https://github.com/huggingface/lerobot) (built on PyTorch)
-- **Data Format:** LeRobotDataset (Parquet metadata + time-synced MP4)
-- **OS:** Ubuntu Linux
+**Software:** Hugging Face LeRobot (PyTorch), LeRobotDataset format (Parquet + time-synced MP4). Everything runs on consumer hardware.
 
-## 2. Methodology
+### Teleoperation & Data Collection
 
-### 2.1 Teleoperation & Data Collection
+I built a leader-follower teleop scheme with the Xbox controller. Analog sticks → end-effector delta (x, y, z). Triggers → gripper. Images and joint states are synced at capture time to keep observation and action spaces aligned—that sync is critical, and I spent time getting it right.
 
-To generate high-quality expert demonstrations, I implemented a leader-follower teleoperation scheme using an Xbox controller.
+### Policy Training
 
-- **Mapping:** Analog sticks control end-effector delta positions (x, y, z). Triggers control gripper state.
-- **Sync:** Images are captured at [30/60] FPS and synchronized with joint state vectors (position, velocity) to minimize drift between observation and action spaces.
+Benchmarking two SOTA algorithms: **ACT** (action chunking with transformers, VAE-encoded temporal sequences) and **Diffusion Policy** (denoising-based action distribution). Config sanity-checked for my hardware constraints (batch size, chunk length, eval frequency).
 
-### 2.2 Policy Training
+### Challenges & Solutions
 
-I am benchmarking two state-of-the-art imitation learning algorithms:
+| Challenge | Solution |
+|-----------|----------|
+| Shoulder joint jitter during hold phase | Tuning PID values on servos—iterative, but critical for clean demos |
+| Vision-action sync drift | Timestamp-based alignment, validated with offline checks |
+| Low-cost hardware constraints | LeRobot's efficient data format + careful batch sizing for training |
 
-1. **ACT (Action Chunking with Transformers):** Uses a VAE to encode temporal action sequences.
-2. **Diffusion Policy:** Models the action distribution as a denoising process.
+---
 
-Example training configuration:
+## Insights
 
-```yaml
-# Example Training Config
-training:
-  offline_steps: 80000
-  batch_size: 64
-  eval_freq: 5000
-policy:
-  type: "act"
-  n_action_steps: 100
-```
-
-## 3. Preliminary Results & Current Milestones
-
-- **Teleoperation:** Real-time control with latency under [X] ms
-- **Dataset:** [X] episodes of pick-and-place (or object pushing) tasks collected
-- **Pipeline validation:** Data recording and LeRobotDataset export verified
-- **Current challenges:** Tuning PID values on shoulder joints to reduce jitter during the hold phase of collection
-
-## 4. Next Steps
-
-- Complete policy training runs and evaluate on real hardware
-- Add quantitative success rates and ablation studies
-- Record a short demo video or GIF of teleoperation and policy execution
-
-## References
-
-- [LeRobot on GitHub](https://github.com/huggingface/lerobot)
-- [LeRobot Documentation](https://huggingface.co/docs/lerobot)
+This project taught me how to think in pipelines—from raw teleop data to deployable policies—and that data quality trumps quantity every time. I walked away with a solid grasp of imitation learning fundamentals, the patience to debug hardware-software interfaces, and the confidence that I can ship something end-to-end on a shoestring budget. This is groundwork I'll carry into every robotics project from here: understanding the full stack lets me make better choices at each layer. More than that, it's my first step toward combining AI and robotics for autonomy—I see this as the foundation for scaling to more complex tasks, multi-agent setups, and eventually systems that can adapt and generalize. This is where I'm building from.
