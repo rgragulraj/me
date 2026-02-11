@@ -51,3 +51,9 @@ Benchmarking two SOTA algorithms: **ACT** (action chunking with transformers, VA
 ## Insights
 
 This project taught me how to think in pipelines—from raw teleop data to deployable policies—and that data quality trumps quantity every time. I walked away with a solid grasp of imitation learning fundamentals, the patience to debug hardware-software interfaces, and the confidence that I can ship something end-to-end on a shoestring budget. This is groundwork I'll carry into every robotics project from here: understanding the full stack lets me make better choices at each layer. More than that, it's my first step toward combining AI and robotics for autonomy—I see this as the foundation for scaling to more complex tasks, multi-agent setups, and eventually systems that can adapt and generalize. This is where I'm building from.
+
+## Resources
+
+- [LeRobot](https://huggingface.co/lerobot)
+- [LeRobot (GitHub)](https://github.com/huggingface/lerobot)
+- [SO-ARM100 / SO-101](https://github.com/TheRobotStudio/SO-ARM100)
