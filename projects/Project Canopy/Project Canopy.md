@@ -4,17 +4,17 @@ date: "Summer 2025"
 summary: AI-powered dashboard for small-scale retail shops featuring automated data sorting, cleaning, and visual analytics.
 ---
 
+![Project Canopy Hero](canopy-hero.jpg)
+
+_Add a main hero image for this project as `canopy-hero.jpg` in this folder._
+
 ## Tech Stack / Platform
 
-AI/ML · Data Processing · Dashboard Development · Analytics · Retail Technology
+Node.js · AI/ML · Data Processing · Dashboard Development · Analytics · Retail Technology
 
 ## Abstract
 
-Project Canopy is an AI dashboard solution designed to address a gap in the retail market. Built as a side project to explore the developer side of AI, it provides small-scale retail shops with powerful data management and analytics capabilities.
-
-The platform allows retailers to upload their data, which is then automatically sorted and cleaned using AI algorithms. Users receive comprehensive visual analytics to help them understand their business performance and make data-driven decisions.
-
-The objective was to create a practical tool that leverages AI to simplify data management for small retailers while gaining hands-on experience with AI development.
+Project Canopy is an AI-powered dashboard for small-scale retail shops. Retailers upload raw data, which Node.js services and AI models clean, organize, and aggregate into clear visual analytics. I built it as a side project to explore the developer side of AI and close a gap I saw in the retail tooling space.
 
 Check out the [GitHub repository](https://github.com/Tiny-Jungle/tj_canopy) for more details.
 
@@ -24,13 +24,7 @@ Check out the [GitHub repository](https://github.com/Tiny-Jungle/tj_canopy) for 
 
 ### System Overview
 
-Project Canopy provides an end-to-end solution for retail data management:
-
-**Pipeline:**
-
-Data Upload → AI Processing (Sorting & Cleaning) → Visual Analytics Dashboard → Business Insights
-
-The system handles the entire data lifecycle, from raw uploads to actionable insights, making it accessible for retailers without technical expertise.
+**Pipeline:** Data Upload → AI Processing (Sorting & Cleaning) → Visual Analytics Dashboard → Business Insights
 
 ### Key Features
 
@@ -46,18 +40,29 @@ I developed this project independently as a side project to:
 - Address a gap I identified in the retail market
 - Create a practical solution for small-scale retailers
 
-The project involved building the entire stack, from data ingestion and AI processing to visualization and analytics.
+The project involved building the entire stack using Node.js, from data ingestion and AI processing to visualization and analytics.
 
-### Key Takeaways
+### What I Learned
 
-- AI/ML implementation for real-world data processing
-- Dashboard development and user experience design
-- Retail data analytics and visualization
-- End-to-end product development from concept to implementation
+### What I Learned
 
-This project provided valuable experience in AI development and full-stack application building while solving a real market need.
+- **Node.js backend**: Built APIs, handled file uploads, and learned async/event-driven patterns.
+- **AI for messy retail data**: Integrated models/APIs to clean, normalize, and structure inconsistent shop data.
+- **Data pipelines & analytics**: Designed a simple pipeline from upload → processing → charts.
+- **Product thinking**: Focused features on what small shop owners actually need instead of a generic dashboard.
+
+This project helped me move from “AI concepts” to shipping a real tool that uses Node.js and AI to solve a concrete problem for small retailers.
 
 ---
+
+## Gallery
+
+_Add screenshots for this project into this folder (e.g., `canopy-dashboard-1.jpg`, `canopy-dashboard-2.png`) and reference them here._
+
+For example:
+
+![Project Canopy Dashboard 1](canopy-dashboard-1.jpg)
+![Project Canopy Dashboard 2](canopy-dashboard-2.png)
 
 ## Resources
 
