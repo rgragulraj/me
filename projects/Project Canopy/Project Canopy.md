@@ -4,9 +4,8 @@ date: "Summer 2025"
 summary: AI-powered dashboard for small-scale retail shops featuring automated data sorting, cleaning, and visual analytics.
 ---
 
-![Project Canopy Hero](canopy-hero.jpg)
+![Project Canopy Hero](./Screenshot%202026-02-11%20230256.png)
 
-_Add a main hero image for this project as `canopy-hero.jpg` in this folder._
 
 ## Tech Stack / Platform
 
@@ -57,12 +56,11 @@ This project helped me move from “AI concepts” to shipping a real tool that 
 
 ## Gallery
 
-_Add screenshots for this project into this folder (e.g., `canopy-dashboard-1.jpg`, `canopy-dashboard-2.png`) and reference them here._
 
 For example:
 
-![Project Canopy Dashboard 1](canopy-dashboard-1.jpg)
-![Project Canopy Dashboard 2](canopy-dashboard-2.png)
+![Project Canopy Dashboard 2](./Vite%20+%20React_page-0001.jpg)
+![Project Canopy Dashboard 1](./Vite%20+%20React1_page-0001.jpg)
 
 ## Resources
 

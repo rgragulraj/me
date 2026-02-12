@@ -4,9 +4,7 @@ date: "Fall 2025"
 summary: Fully autonomous irrigation system for EGR 304—PIC18 microcontrollers, capacitive soil moisture sensing, multi-board communication, and custom PCB design.
 ---
 
-![Water-Efficient Irrigation System Hero](304_2.jpg)
-
-_Hero image from the EGR 304 irrigation system build._
+![Water-Efficient Irrigation System Hero](./304_1.png)
 
 ## Tech Stack / Platform
 
@@ -64,8 +62,8 @@ This project strengthened my ability to design embedded systems from schematic t
 
 ## Gallery
 
-![Irrigation System – Full Setup](304_2.jpg)
-![Irrigation System – Close-Up](304_1.jpg)
+![Irrigation System – Full Setup](./304_1.png)
+![Irrigation System – Close-Up](./304_2.jpg)
 
 ## Resources
 
