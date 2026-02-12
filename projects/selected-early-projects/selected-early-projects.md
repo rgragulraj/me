@@ -18,7 +18,7 @@ Developed an interactive memory game for elementary students.
 
 <div class="stem-carousel" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
   <button type="button" aria-label="Previous image" onclick="var i=this.parentNode.querySelector('img'); i.src=i.src.includes('202_1')?'selected-early-projects/202_2.png':'selected-early-projects/202_1.png';" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">‹</button>
-  <img src="./202_1.png" alt="Memory-Based STEM Game" style="flex: 1; max-width: 100%; height: auto; border-radius: 6px; display: block;" />
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden;"><img src="./202_1.png" alt="Memory-Based STEM Game" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px; display: block;" /></div>
   <button type="button" aria-label="Next image" onclick="var i=this.parentNode.querySelector('img'); i.src=i.src.includes('202_1')?'selected-early-projects/202_2.png':'selected-early-projects/202_1.png';" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">›</button>
 </div>
 
