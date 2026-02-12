@@ -58,8 +58,8 @@ This project helped me move from “AI concepts” to shipping a real tool that 
 
 
 For example:
-![Project Canopy Dashboard 1](./Vite%20+%20React1_page-0001.jpg)
-![Project Canopy Dashboard 2](./Vite%20+%20React_page-0001.jpg)
+![Project Canopy Dashboard 1](./Vite%20+%20React_page-0001.jpg)
+
 
 ## Resources
 
