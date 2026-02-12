@@ -70,12 +70,12 @@ Activation timing was tightly managed to: prevent overheating, ensure clean pick
 
 ### Challenges & Solutions
 
-| Challenge                      | Solution                                           |
-|--------------------------------|----------------------------------------------------|
-| Camera-to-base frame mismatch  | Manual calibration + homogeneous transform         |
-| UART synchronization issues    | Blocking receive logic + structured transmission   |
-| Angle-to-PWM inconsistencies   | Explicit conversion and tuning                     |
-| Workspace reach violations     | Constrained IK within physical limits              |
+| Challenge | Solution |
+| --- | --- |
+| Camera-to-base frame mismatch | Manual calibration + homogeneous transform |
+| UART synchronization issues | Blocking receive logic + structured transmission |
+| Angle-to-PWM inconsistencies | Explicit conversion and tuning |
+| Workspace reach violations | Constrained IK within physical limits |
 
 ---
 
