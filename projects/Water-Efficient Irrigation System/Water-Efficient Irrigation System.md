@@ -6,15 +6,17 @@ summary: Fully autonomous irrigation system for EGR 304—PIC18 microcontrollers
 
 ## Tech Stack / Platform
 
-PIC18 Microcontrollers · MPLAB X · Embedded C · Custom PCB Design · Capacitive Soil Moisture Sensor · Light Sensor · Multi-Board Communication
+PIC18 Microcontrollers · MPLAB X · KiCAD · Embedded C · Custom PCB Design · Capacitive Soil Moisture Sensor · Light Sensor · Multi-Board Communication
 
 ## Abstract
 
 As part of EGR 304 – Microprocessor Systems (taught by Dr. Dan Aukes), our team designed and built a fully autonomous irrigation system using the Microchip PIC microcontroller family. The system made watering decisions based solely on real-time soil moisture and sunlight measurements.
 
-Each subsystem ran on its own PIC board, and we designed custom PCBs to integrate sensing, control, and power distribution.
+Each subsystem ran on its own PIC board, and we designed custom PCBs in KiCAD to integrate sensing, control, and power distribution.
 
 The objective was to develop low-level embedded systems fluency through full-stack hardware–firmware integration.
+
+Check out the [team website](#) and [individual subsystem documentation](#) for more details.
 
 ---
 
@@ -46,7 +48,7 @@ This required cross-board communication, ADC configuration, and reliable embedde
 ### Key Takeaways
 
 - Multi-microcontroller system architecture
-- Custom PCB design and hardware integration
+- Custom PCB design with KiCAD and hardware integration
 - Analog sensor acquisition and calibration
 - Embedded C firmware development in the PIC ecosystem
 
