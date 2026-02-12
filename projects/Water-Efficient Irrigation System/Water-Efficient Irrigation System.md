@@ -10,7 +10,7 @@ PIC18 Microcontrollers · MPLAB X · KiCAD · Embedded C · Custom PCB Design ·
 
 ## Abstract
 
-As part of EGR 304 – Microprocessor Systems (taught by Dr. Dan Aukes), our team designed and built a fully autonomous irrigation system using the Microchip PIC microcontroller family. The system made watering decisions based solely on real-time soil moisture and sunlight measurements.
+As part of EGR 304 – Microprocessor Systems (taught by [Dr. Dan Aukes](https://www.linkedin.com/in/dan-aukes-502995212/)), our team designed and built a fully autonomous irrigation system using the Microchip PIC microcontroller family. The system made watering decisions based solely on real-time soil moisture and sunlight measurements.
 
 Each subsystem ran on its own PIC board, and we designed custom PCBs in KiCAD to integrate sensing, control, and power distribution.
 
