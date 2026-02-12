@@ -4,6 +4,10 @@ date: "Fall 2025"
 summary: Fully autonomous irrigation system for EGR 304—PIC18 microcontrollers, capacitive soil moisture sensing, multi-board communication, and custom PCB design.
 ---
 
+![Water-Efficient Irrigation System Hero](304_2.jpg)
+
+_Hero image from the EGR 304 irrigation system build._
+
 ## Tech Stack / Platform
 
 PIC18 Microcontrollers · MPLAB X · KiCAD · Embedded C · Custom PCB Design · Capacitive Soil Moisture Sensor · Light Sensor · Multi-Board Communication
@@ -14,9 +18,9 @@ As part of EGR 304 – Microprocessor Systems (taught by [Dr. Dan Aukes](https:/
 
 Each subsystem ran on its own PIC board, and we designed custom PCBs in KiCAD to integrate sensing, control, and power distribution.
 
-The objective was to develop low-level embedded systems fluency through full-stack hardware–firmware integration.
+The objective was to develop low-level embedded systems fluency through full-stack hardware–firmware integration. Just as importantly, this course walked us through the professional process of turning an initial idea into a working product, and it ended up being one of the classes where I learned the most.
 
-Check out the [team website](#) and [individual subsystem documentation](#) for more details.
+Check out the [team website](https://egr304-2025-f-101.github.io/team101.github.io/) and [individual subsystem documentation](https://rrangasa.github.io/EGR304raj.github.io/) for more details.
 
 ---
 
@@ -52,10 +56,17 @@ This required cross-board communication, ADC configuration, and reliable embedde
 - Analog sensor acquisition and calibration
 - Embedded C firmware development in the PIC ecosystem
 
+**More than anything, this class taught me the professional process of taking an idea all the way to a working product—and it was easily one of the courses where I learned the most.**
+
 This project strengthened my ability to design embedded systems from schematic to firmware to integrated operation.
 
 ---
 
+## Gallery
+
+![Irrigation System – Full Setup](304_2.jpg)
+![Irrigation System – Close-Up](304_1.jpg)
+
 ## Resources
 
-- [Team Site](#) · [Individual Datasheet](#)
+- [Team Site](https://egr304-2025-f-101.github.io/team101.github.io/) · [Individual Datasheet](https://rrangasa.github.io/EGR304raj.github.io/)
