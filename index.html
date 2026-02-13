@@ -22,6 +22,7 @@
             line-height: 1.65;
             min-height: 100vh;
             display: flex;
+            position: relative;
         }
 
         /* Sidebar Navigation */
@@ -76,10 +77,10 @@
             opacity: 1;
         }
 
-        /* Menu Button - Hidden by default, shown on mobile */
+        /* Menu Button - Hidden by default, shown on mobile; not sticky so it scrolls with content */
         .menu-button {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 1.5rem;
             left: 1.5rem;
             z-index: 1000;
