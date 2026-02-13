@@ -14,7 +14,6 @@ Before my formal robotics coursework, I built a series of hardware and embedded 
 
 _2024_
 
-Developed an interactive memory game for elementary students.
 
 <div class="stem-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
   <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.carousel-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
@@ -24,6 +23,8 @@ Developed an interactive memory game for elementary students.
   </div>
   <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.carousel-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
 </div>
+
+Developed an interactive memory game for elementary students.
 
 - **What it did**:
   - Custom game logic with multiple modes (memory + soundboard)
@@ -37,7 +38,6 @@ Developed an interactive memory game for elementary students.
 
 _2023_
 
-My first hardware–software integration project.
 
 <div class="mask-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
   <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.mask-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
@@ -47,6 +47,9 @@ My first hardware–software integration project.
   </div>
   <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.mask-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
 </div>
+
+My first hardware–software integration project.
+
 
 - **What it did**:
   - Implemented real-time face mask detection using OpenCV (Python)
@@ -108,7 +111,6 @@ Early summer project implementing:
 
 _2018_
 
-Arduino-based wearable prototype with:
 
 <div class="cardiac-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
   <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.cardiac-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
@@ -118,6 +120,8 @@ Arduino-based wearable prototype with:
   </div>
   <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.cardiac-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
 </div>
+
+Arduino-based wearable prototype with:
 
 - **What it did**:
   - Heart rate sensor integration
