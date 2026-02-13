@@ -241,17 +241,10 @@
         .project-content img:first-of-type {
             display: block;
             width: 100%;
-            /* Hero image: intentionally cropped for a banner look */
-            max-height: 420px;
-            object-fit: cover;
-            margin-top: 0;
-        }
-
-        /* Gallery images: never force-crop; keep natural aspect ratio */
-        .project-content img:not(:first-of-type) {
+            /* Show full hero image without cropping */
             max-height: none;
-            object-fit: initial;
-            background: transparent;
+            object-fit: contain;
+            margin-top: 0;
         }
 
         .project-content blockquote {
