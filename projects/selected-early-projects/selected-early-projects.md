@@ -16,10 +16,13 @@ _2024_
 
 Developed an interactive memory game for elementary students.
 
-<div class="stem-carousel" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
-  <button type="button" aria-label="Previous image" onclick="var i=this.parentNode.querySelector('img'); i.src=i.src.includes('202_1')?'selected-early-projects/202_2.png':'selected-early-projects/202_1.png';" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">‹</button>
-  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden;"><img src="./202_1.png" alt="Memory-Based STEM Game" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px; display: block;" /></div>
-  <button type="button" aria-label="Next image" onclick="var i=this.parentNode.querySelector('img'); i.src=i.src.includes('202_1')?'selected-early-projects/202_2.png':'selected-early-projects/202_1.png';" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">›</button>
+<div class="stem-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.carousel-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; position: relative;">
+    <div class="carousel-slide" style="width:100%;height:100%;position:absolute;inset:0;"><img src="./202_1.png" alt="Memory-Based STEM Game – View 1" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="carousel-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><img src="./202_2.png" alt="Memory-Based STEM Game – View 2" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.carousel-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
 </div>
 
 - **What it did**:
@@ -61,6 +64,15 @@ Designed alongside an international championship team during COVID shortages.
 ## Basic Garden Automation System
 
 _2019_
+
+<div class="garden-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.garden-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; position: relative;">
+    <div class="garden-slide" style="width:100%;height:100%;position:absolute;inset:0;"><img src="./water_1.png" alt="Basic Garden Automation System" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="garden-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><iframe src="https://www.youtube.com/embed/pPG_WdgbR78" title="Basic Garden Automation System – Video" style="width:100%;height:100%;border-radius:6px;border:none;" allowfullscreen></iframe></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.garden-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
+</div>
 
 Early summer project implementing:
 
