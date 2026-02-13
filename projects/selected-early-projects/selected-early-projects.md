@@ -1,6 +1,6 @@
 ---
 title: "Selected Early Projects"
-date: "2019–2022"
+date: "2019 - 2024"
 summary: A curated set of early projects that shaped how I think about building, debugging, and shipping software and hardware.
 ---
 
