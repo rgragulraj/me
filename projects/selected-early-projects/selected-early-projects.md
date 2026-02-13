@@ -39,6 +39,15 @@ _2023_
 
 My first hardware–software integration project.
 
+<div class="mask-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.mask-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; position: relative;">
+    <div class="mask-slide" style="width:100%;height:100%;position:absolute;inset:0;"><img src="./mask_1.png" alt="Smart Mask Detection Gate – View 1" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="mask-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><img src="./mask_2.png" alt="Smart Mask Detection Gate – View 2" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.mask-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
+</div>
+
 - **What it did**:
   - Implemented real-time face mask detection using OpenCV (Python)
   - Integrated with an Arduino-controlled gate prototype
@@ -51,13 +60,24 @@ My first hardware–software integration project.
 
 _2021_
 
+<div class="ventilator-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.ventilator-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+3)%3;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; position: relative;">
+    <div class="ventilator-slide" style="width:100%;height:100%;position:absolute;inset:0;"><img src="./ventilator_1.jpg" alt="Low-Cost Emergency Ventilator – View 1" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="ventilator-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><img src="./ventilator_2.jpg" alt="Low-Cost Emergency Ventilator – View 2" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="ventilator-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><img src="./ventilator_3.jpg" alt="Low-Cost Emergency Ventilator – View 3" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.ventilator-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%3;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
+</div>
+
 Designed alongside an international championship team during COVID shortages.
+
 
 - **What it did**:
   - Focused on low-cost, easily sourced components
-  - Intended as a temporary emergency solution during ventilator shortages
-  - Recognized by the Dean of Government Medical College, Coimbatore
-- **What I learned**: This project introduced me to constraint-driven engineering and socially impactful design.
+  - Intended as a temporary emergency solution during ventilator shortages (Covid-19)
+  - Recognized by the Dean of Government Medical College, Coimbatore and the Collectorate of Coimbatore
+- **What I learned**: This project gave me hands-on experience in constraint-driven design and building technology with real social impact.
 
 ---
 
@@ -89,6 +109,15 @@ Early summer project implementing:
 _2018_
 
 Arduino-based wearable prototype with:
+
+<div class="cardiac-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.cardiac-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; position: relative;">
+    <div class="cardiac-slide" style="width:100%;height:100%;position:absolute;inset:0;"><img src="./cardiac_watch_1.jpg" alt="Cardiac Alert Watch" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="cardiac-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><iframe src="https://www.youtube.com/embed/hlLlohm7iBA" title="Cardiac Alert Watch – Video" style="width:100%;height:100%;border-radius:6px;border:none;" allowfullscreen></iframe></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.cardiac-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
+</div>
 
 - **What it did**:
   - Heart rate sensor integration
