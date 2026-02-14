@@ -116,11 +116,13 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 998;
             opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease;
         }
 
         .sidebar-overlay.active {
             opacity: 1;
+            pointer-events: auto;
         }
 
         /* Main Content - 6rem top to align with sidebar and match spacing from top */
