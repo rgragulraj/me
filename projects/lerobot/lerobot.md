@@ -1,7 +1,7 @@
 ---
 title: "Imitation Learning with LeRobot (SO-101)"
 date: "November 2025 - Ongoing"
-summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-101 arm, Xbox teleoperation, smartphone vision. Training ACT and Diffusion policies for dexterity tasks.
+summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-101 arm, Xbox joystick teleoperation, smartphone vision with Droid cam and OpenCV. Training ACT policy for dexterity tasks.
 ---
 
 ![LeRobot setup](./vellai_kunjan_2.jpg)
@@ -12,7 +12,7 @@ Python · Hugging Face LeRobot · Ubuntu · SO-101 6-DOF Arm
 
 ## Abstract
 
-I'm building a full imitation learning pipeline from scratch on low-cost hardware—because I wanted to prove it's possible without a $50K robot. Custom SO-101 arm, Xbox controller for teleoperation, smartphone as the eyes, and LeRobot doing the heavy lifting. The goal: train policies (ACT, Diffusion) that can actually perform dexterity tasks on real hardware.
+I'm building a full imitation learning pipeline from scratch on low-cost hardware—because I wanted to prove it's possible without a $50K robot. Custom SO-101 arm, Xbox joystick for teleoperation, Droid cam on my phone and OpenCV on my laptop for visual, and LeRobot doing the heavy lifting. I used ACT policy training for imitation learning and am currently working on building my own policies.
 
 ---
 
@@ -22,17 +22,17 @@ I'm building a full imitation learning pipeline from scratch on low-cost hardwar
 
 Closed-loop imitation learning: collect demonstrations → train policy → deploy on robot. I chose the **SO-101** over the older SO-100 for better structural rigidity and cable management—small design choices that matter when you're chasing repeatability.
 
-**Hardware:** Custom 3D-printed SO-101 arm, Feetech serial servos, Xbox Series X controller (joint velocity control), smartphone camera for vision.
+**Hardware:** Custom 3D-printed SO-101 arm, Feetech serial servos, Xbox joystick for teleoperation.
 
-**Software:** Hugging Face LeRobot (PyTorch), LeRobotDataset format (Parquet + time-synced MP4). Everything runs on consumer hardware.
+**Software:** Hugging Face LeRobot (PyTorch), LeRobotDataset format (Parquet + time-synced MP4), Droid cam on phone, OpenCV on laptop for visual. Everything runs on consumer hardware.
 
 ### Teleoperation & Data Collection
 
-I built a leader-follower teleop scheme with the Xbox controller. Analog sticks → end-effector delta (x, y, z). Triggers → gripper. Images and joint states are synced at capture time to keep observation and action spaces aligned—that sync is critical, and I spent time getting it right.
+I built a teleoperation setup using an Xbox joystick to train the bot on ACT imitation learning. I used Droid cam on my phone and OpenCV on my laptop for visual. Images and joint states are synced at capture time to keep observation and action spaces aligned—that sync is critical, and I spent time getting it right.
 
 ### Policy Training
 
-Benchmarking two SOTA algorithms: **ACT** (action chunking with transformers, VAE-encoded temporal sequences) and **Diffusion Policy** (denoising-based action distribution). Config sanity-checked for my hardware constraints (batch size, chunk length, eval frequency).
+I only did the ACT policy training (action chunking with transformers, VAE-encoded temporal sequences). I'm currently working on building my own policies. Config sanity-checked for my hardware constraints (batch size, chunk length, eval frequency).
 
 ### Challenges & Solutions
 
