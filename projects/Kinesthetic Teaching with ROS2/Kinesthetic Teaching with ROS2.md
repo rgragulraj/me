@@ -4,7 +4,7 @@ date: "February 2025"
 summary: Learning ROS2 by implementing kinesthetic teaching on the SO-101 arm—recording and replaying motions by physically guiding the robot and playing them back via ROS2 nodes and topics.
 ---
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/42STxw2Ngu0" title="Kinesthetic Teaching with ROS2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin: 1rem 0;"></iframe>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/42STxw2Ngu0?autoplay=1&mute=1" title="Kinesthetic Teaching with ROS2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin: 1rem 0;"></iframe>
 
 ## Objective
 
