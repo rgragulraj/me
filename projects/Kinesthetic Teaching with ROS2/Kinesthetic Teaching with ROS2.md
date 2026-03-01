@@ -6,9 +6,9 @@ summary: Built a ROS2 Jazzy controller node for the SO-101 arm and a kinesthetic
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/42STxw2Ngu0?autoplay=1&mute=1" title="Kinesthetic Teaching with ROS2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin: 1rem 0;"></iframe>
 
-## Tech Stack
+## Tech Stack · [GitHub](https://github.com/rgragulraj/ros2_ws)
 
-Python · ROS2 Jazzy · Ubuntu 24.04 · SO-101 6-DOF Arm · Feetech STS3215 Servos · Waveshare Bus Servo Adapter · scservo_sdk · colcon
+Python · ROS2 Jazzy · Ubuntu 24.04 · SO-101 6-DOF Arm · scservo_sdk · colcon
 
 ## Objective
 
