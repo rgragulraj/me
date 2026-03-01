@@ -163,18 +163,31 @@
             font-weight: 400;
         }
 
-        .intro-section .connect-line a {
-            color: #fff;
-            font-weight: 400;
-        }
-
         .connect-line {
             margin-top: 4rem;
             margin-bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            font-size: 0.95rem;
+        }
+
+        .connect-line a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: opacity 0.3s ease;
+        }
+
+        .connect-line a:hover {
+            opacity: 0.8;
         }
 
         .connect-line .sep {
             margin: 0 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            user-select: none;
         }
 
         p {
