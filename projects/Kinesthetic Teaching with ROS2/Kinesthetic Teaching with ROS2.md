@@ -1,25 +1,46 @@
 ---
 title: "Kinesthetic Teaching with ROS2"
 date: "February 2025"
-summary: Learning ROS2 by implementing kinesthetic teaching on the SO-101 arm—recording and replaying motions by physically guiding the robot and playing them back via ROS2 nodes and topics.
+summary: Built a ROS2 Jazzy controller node for the SO-101 arm and a kinesthetic teaching pipeline—physically guide the arm, record the trajectory, and replay it—to learn ROS2 fundamentals on real hardware.
 ---
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/42STxw2Ngu0?autoplay=1&mute=1" title="Kinesthetic Teaching with ROS2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin: 1rem 0;"></iframe>
 
+## Tech Stack
+
+Python · ROS2 Jazzy · Ubuntu 24.04 · SO-101 6-DOF Arm · Feetech STS3215 Servos · Waveshare Bus Servo Adapter · scservo_sdk · colcon
+
 ## Objective
 
-This project is a hands-on way to **learn ROS2**: use the SO-101 arm to do kinesthetic teaching (teach by demonstration), then replay the recorded motions through a small ROS2 workflow. The goal is to get comfortable with ROS2 concepts—nodes, topics, and the publish/subscribe model—while doing something concrete on real hardware.
+Learn ROS2 by building something real: a controller node for the SO-101 arm and a teach-by-demonstration workflow where I physically guide the arm through a motion, record the trajectory, and play it back.
 
-## Setup
+---
 
-- **Robot:** SO-101 arm  
-- **Middleware:** ROS2  
-- **Idea:** Physically move the arm through a desired motion (kinesthetic teaching), record joint positions (or similar) as the motion is executed, then publish and replay that trajectory using ROS2 nodes.
+## What I Built
 
-## What I did
+### Part 1 — ROS2 Controller Node
 
-I used the SO-101 arm to record motions by physically guiding it, then replayed those motions via ROS2. That meant writing or using nodes that publish joint states or trajectory messages and others that subscribe and drive the arm, so the same motion could be repeated. Along the way I touched topics, message types, and the basics of the ROS2 Python client library.
+A ROS2 node (`so101_controller`) that owns the serial connection to the arm's six Feetech STS3215 servos via a Waveshare Bus Servo Adapter on `/dev/ttyACM0`. It publishes live joint states on `/joint_states` at 10 Hz and subscribes to `/arm/joint_goal` for movement commands. This was my entry point into ROS2—setting up the workspace with `colcon`, writing an `ament_python` package (`my_arm_pkg`), defining entry points in `setup.py`, and working with `sensor_msgs/msg/JointState` messages.
+
+### Part 2 — Kinesthetic Teaching Pipeline
+
+A four-script workflow for teach-by-demonstration, using direct serial control via `scservo_sdk`:
+
+| Script | What it does |
+|---|---|
+| `capture_home.py` | Reads all six servo positions and saves the current pose as the home position (`config/home.json`) |
+| `go_home.py` | Smoothly interpolates from the current position to home over 2 seconds at 50 Hz |
+| `teach.py` | Disables torque so the arm goes limp, records joint positions at 10 Hz while I physically guide it, then re-enables torque and saves the trajectory (`data/trajectory.json`) |
+| `run_demo.py` | Loads the recorded trajectory and replays it at the original timing, then returns to home |
+
+The arm has six joints—shoulder pan, shoulder lift, elbow flex, wrist flex, wrist roll, and gripper—each driven by a Feetech STS3215 servo. Positions are converted between raw servo counts and radians (`0 rad = raw 2048`, ~651 counts per radian).
+
+---
 
 ## Takeaways
 
-Kinesthetic teaching is a simple and intuitive way to get a robot to “learn” a motion without coding the path by hand. Doing it on ROS2 forced me to think in terms of nodes, topics, and messages—which made the ROS2 model stick better than only reading docs. This project is a practical stepping stone toward more advanced ROS2 workflows (e.g. motion planning, perception, or multi-robot setups) while keeping the hardware and task manageable.
+This project forced me to think in ROS2 terms—nodes, topics, publishers, subscribers, message types—while solving a concrete problem on real hardware. The controller node gave me a solid grasp of the ROS2 workspace structure, build system (`colcon`, `ament_python`), and pub/sub model. The kinesthetic teaching pipeline taught me how to work directly with servo hardware, handle torque control, and think about trajectory recording and playback at the signal level. It's a practical foundation for more advanced ROS2 work like `ros2_control`, MoveIt, or multi-robot setups.
+
+## Resources
+
+- [GitHub Repository](https://github.com/rgragulraj/ros2_ws)
