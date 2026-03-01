@@ -1,10 +1,10 @@
 ---
 title: "Kinesthetic Teaching with ROS2"
-date: "2025"
+date: "February 2025"
 summary: Learning ROS2 by implementing kinesthetic teaching on the SO-101 arm—recording and replaying motions by physically guiding the robot and playing them back via ROS2 nodes and topics.
 ---
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/63UxBt0nATA" title="Kinesthetic Teaching with ROS2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin: 1rem 0;"></iframe>
+<iframe width="100%" height="400" src="https://youtu.be/42STxw2Ngu0" title="Kinesthetic Teaching with ROS2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin: 1rem 0;"></iframe>
 
 ## Objective
 
@@ -18,7 +18,7 @@ This project is a hands-on way to **learn ROS2**: use the SO-101 arm to do kines
 
 ## What I did
 
-I used the SO-101 arm to record motions by physically guiding it, then replayed those motions via ROS2. That meant writing or using nodes that publish joint states or trajectory messages and others that subscribe and drive the arm, so the same motion could be repeated. Along the way I touched topics, message types, and the basics of the ROS2 Python (or C++) client library.
+I used the SO-101 arm to record motions by physically guiding it, then replayed those motions via ROS2. That meant writing or using nodes that publish joint states or trajectory messages and others that subscribe and drive the arm, so the same motion could be repeated. Along the way I touched topics, message types, and the basics of the ROS2 Python client library.
 
 ## Takeaways
 
