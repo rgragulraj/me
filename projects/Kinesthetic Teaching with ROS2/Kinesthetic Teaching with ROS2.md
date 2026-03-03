@@ -1,6 +1,6 @@
 ---
 title: "Kinesthetic Teaching with ROS2"
-date: "February 2025"
+date: "February 2026"
 summary: Built a ROS2 Jazzy controller node for the SO-101 arm and a kinesthetic teaching pipeline—physically guide the arm, record the trajectory, and replay it—to learn ROS2 fundamentals on real hardware.
 ---
 
