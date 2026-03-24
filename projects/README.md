@@ -55,7 +55,7 @@ projects/
 Add images anywhere in your project markdown using standard syntax. Use relative paths (e.g. `./file.jpg` or `file.jpg`); they resolve to the project folder.
 
 ```markdown
-![Robot setup](./vellai_kunjan_2.jpg)
+![Robot setup](./example.jpg)
 
 Your project description here...
 ```

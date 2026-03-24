@@ -4,7 +4,14 @@ date: "November 2025 - Ongoing"
 summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-101 arm, Xbox joystick teleoperation, smartphone vision with Droid cam and OpenCV. Training ACT policy for dexterity tasks.
 ---
 
-![LeRobot setup](./vellai_kunjan_2.jpg)
+<div class="lerobot-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.lerobot-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+2)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; position: relative;">
+    <div class="lerobot-slide" style="width:100%;height:100%;position:absolute;inset:0;"><iframe src="https://www.youtube.com/embed/Q7Np9ZYO1us" title="Imitation Learning with LeRobot (SO-101) – Video 1" style="width:100%;height:100%;border:none;border-radius:8px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="lerobot-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><iframe src="https://www.youtube.com/embed/hCE5Kk9XL3o" title="Imitation Learning with LeRobot (SO-101) – Video 2" style="width:100%;height:100%;border:none;border-radius:8px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.lerobot-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%2;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
+</div>
 
 ## Tech Stack / Platform
 
