@@ -1,6 +1,6 @@
 ---
 title: "Imitation Learning with LeRobot (SO-101)"
-date: "November 2025 - Ongoing"
+date: "February 2026"
 summary: End-to-end imitation learning on a low-cost SO-101 platform using LeRobot and ACT, with closed-loop deployment for precision pick-and-place tasks.
 ---
 
