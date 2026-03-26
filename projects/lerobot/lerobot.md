@@ -1,7 +1,7 @@
 ---
 title: "Imitation Learning with LeRobot (SO-101)"
 date: "November 2025 - Ongoing"
-summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-101 arm, Xbox joystick teleoperation, smartphone vision with Droid cam and OpenCV. Training ACT policy for dexterity tasks.
+summary: End-to-end imitation learning on a low-cost SO-101 platform using LeRobot and ACT, with closed-loop deployment for precision pick-and-place tasks.
 ---
 
 <div class="lerobot-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; width: 100%; max-width: 100%; margin: 1rem 0;">
@@ -15,11 +15,11 @@ summary: End-to-end imitation learning pipeline on low-cost hardware: custom SO-
 
 ## Tech Stack / Platform
 
-Python · Hugging Face LeRobot · Ubuntu · SO-101 6-DOF Arm 
+Python / PyTorch · Hugging Face LeRobot · Ubuntu · SO-101 6-DOF Arm
 
 ## Abstract
 
-I'm building a full imitation learning pipeline from scratch on low-cost hardware—because I wanted to prove it's possible without a $50K robot. Custom SO-101 arm, Xbox joystick for teleoperation, Droid cam on my phone and OpenCV on my laptop for visual, and LeRobot doing the heavy lifting. I used ACT policy training for imitation learning and am currently working on building my own policies.
+This project implements the ACT (Action Chunking with Transformers) policy using the Hugging Face LeRobot framework on the SO-101 robotic arm. An overhead Logitech C920 webcam serves as the visual input. Demonstrations were collected via teleoperation using a leader arm, and the trained policy is deployed closed-loop on the follower arm.
 
 ---
 
@@ -27,33 +27,53 @@ I'm building a full imitation learning pipeline from scratch on low-cost hardwar
 
 ### Architecture
 
-Closed-loop imitation learning: collect demonstrations → train policy → deploy on robot. I chose the **SO-101** over the older SO-100 for better structural rigidity and cable management—small design choices that matter when you're chasing repeatability.
+Closed-loop imitation learning using ACT: collect demonstrations -> train policy -> deploy on robot.
 
-**Hardware:** Custom 3D-printed SO-101 arm, Feetech serial servos, Xbox joystick for teleoperation.
+### Hardware
 
-**Software:** Hugging Face LeRobot (PyTorch), LeRobotDataset format (Parquet + time-synced MP4), Droid cam on phone, OpenCV on laptop for visual. Everything runs on consumer hardware.
+- SO-101 Leader and Follower Arm ([SO-ARM100 / SO-101](https://github.com/TheRobotStudio/SO-ARM100))
+- Logitech C920 Webcam
+
+### Software
+
+- Hugging Face LeRobot (PyTorch)
+- Ubuntu
 
 ### Teleoperation & Data Collection
 
-I built a teleoperation setup using an Xbox joystick to train the bot on ACT imitation learning. I used Droid cam on my phone and OpenCV on my laptop for visual. Images and joint states are synced at capture time to keep observation and action spaces aligned—that sync is critical, and I spent time getting it right.
+Keyboard and Xbox controller teleoperation were attempted first, but both were too imprecise for fine manipulation tasks. The workflow then moved to a leader-arm teleoperation setup, which was more natural and produced better demonstrations, but precise placement remained difficult at sub-centimeter scales.
 
 ### Policy Training
 
-I only did the ACT policy training (action chunking with transformers, VAE-encoded temporal sequences). I'm currently working on building my own policies. Config sanity-checked for my hardware constraints (batch size, chunk length, eval frequency).
-
-### Challenges & Solutions
-
-| Challenge | Solution |
-|-----------|----------|
-| Shoulder joint jitter during hold phase | Tuning PID values on servos—iterative, but critical for clean demos |
-| Vision-action sync drift | Timestamp-based alignment, validated with offline checks |
-| Low-cost hardware constraints | LeRobot's efficient data format + careful batch sizing for training |
+The model was trained using the ACT policy (Action Chunking with Transformers). Reference paper: [ACT: Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://arxiv.org/abs/2304.13705). No other policies were evaluated in this phase.
 
 ---
 
-## Insights
+## Conclusion / Insights / Future Work
 
-This project taught me how to think in pipelines—from raw teleop data to deployable policies—and that data quality trumps quantity every time. I walked away with a solid grasp of imitation learning fundamentals, the patience to debug hardware-software interfaces, and the confidence that I can ship something end-to-end on a shoestring budget. This is groundwork I'll carry into every robotics project from here: understanding the full stack lets me make better choices at each layer. More than that, it's my first step toward combining AI and robotics for autonomy—I see this as the foundation for scaling to more complex tasks, multi-agent setups, and eventually systems that can adapt and generalize. This is where I'm building from.
+The policy demonstrates that closed-loop imitation learning on low-cost hardware is feasible, but precision is the central limitation. The target task requires placing a block into a shape-matched slot with less than 3 mm tolerance, which exposes two compounding bottlenecks: teleoperated human demonstrations are not consistently precise enough for high-accuracy insertion tasks, and the policy currently has no explicit mechanism to reason about uncertainty before committing to an action.
+
+The next stage of this project will prioritize methods that directly improve reliability on precision-heavy manipulation:
+
+1. **Better data collection for precision tasks**  
+Human teleoperation is useful for bootstrapping behavior, but it is not ideal for generating consistently high-precision trajectories. A more reliable data pipeline is to use inverse kinematics with an OpenCV-guided script to execute programmatic pick-and-place motions and log clean demonstrations. This should reduce label noise, improve temporal consistency, and provide stronger supervision for tight-tolerance insertion.
+
+2. **Uncertainty estimation in ACT**  
+The current ACT setup predicts actions without an explicit confidence signal. Adding an uncertainty estimation module to the ACT source would allow the controller to detect low-confidence states and trigger a retry or corrective subroutine rather than executing a likely failure action. This is especially important near contact-rich phases such as final alignment and insertion.
+
+3. **Ensemble of policies**  
+A single policy can produce high variance on edge cases. Training multiple ACT models with different random seeds or dataset splits, then combining their outputs with a voting or confidence-weighted fusion mechanism, can reduce variance and improve robustness on difficult placements.
+
+4. **Shape-aware visual features**  
+The current perception stack can be strengthened by adding DINOv2-based shape-aware features so the policy better distinguishes object-slot geometry. Improved shape encoding should help disambiguate visually similar scenes and produce more accurate alignment actions for insertion.
+
+5. **Language conditioning**  
+Integrating CLIP or a comparable vision-language model would allow task instructions in natural language (for example, "pick up the star-shaped block and place it in the star slot"). This would make the policy interface more flexible and improve compositional task specification without rewriting control code for each object type.
+
+6. **Shape and spatial augmentation**  
+During training, artificial variation in object shape, position, and orientation can force the policy to learn more position-invariant and orientation-robust behaviors. This kind of augmentation is a practical way to improve generalization and reduce brittle overfitting to a narrow workspace configuration.
+
+Future work will focus specifically on precision-intensive and orientation-intensive manipulation tasks, where sub-millimeter accuracy and object orientation both matter, since these remain the hardest open problems for imitation learning on low-cost robotic arms.
 
 ## Resources
 
