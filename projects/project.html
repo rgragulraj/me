@@ -528,6 +528,17 @@
                         const path = src.startsWith('./') ? src.slice(2) : src;
                         return '<img' + attrs + ' src="' + base + path + '"';
                     });
+                    // Rewrite relative video/source src to project folder (e.g. demo.mp4 -> lerobot/demo.mp4)
+                    html = html.replace(/<video([^>]*)\ssrc="([^"]*)"/gi, (match, attrs, src) => {
+                        if (!src || /^(https?:|\/|#)/.test(src.trim())) return match;
+                        const path = src.startsWith('./') ? src.slice(2) : src;
+                        return '<video' + attrs + ' src="' + base + path + '"';
+                    });
+                    html = html.replace(/<source([^>]*)\ssrc="([^"]*)"/gi, (match, attrs, src) => {
+                        if (!src || /^(https?:|\/|#)/.test(src.trim())) return match;
+                        const path = src.startsWith('./') ? src.slice(2) : src;
+                        return '<source' + attrs + ' src="' + base + path + '"';
+                    });
                     html = html.replace(/<a([^>]*)\shref="([^"]*)"/gi, (match, attrs, href) => {
                         if (!href || /^(https?:|\/|#|mailto:)/.test(href.trim())) return match;
                         const path = href.startsWith('./') ? href.slice(2) : href;
