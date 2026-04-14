@@ -46,4 +46,4 @@ Both policies are based on ACT, but each is tuned for its specific subtask:
 
 ### Development Order
 
-Policy 2 is being developed first. Its operating envelope defines what Policy 1 must provide at handoff, so the precision stage is stabilized before focusing on how broadly Policy 1 generalizes. The full two-policy pipeline is evaluated once both policies are reliable in isolation.
+Policy 1 is being developed first. The video above shows a run of Policy 1 (pick and approach). Grasping the block is still inconsistent: the policy sometimes fails to pick it up cleanly, and improving that behavior is the current focus. Policy 2 and the full handoff pipeline will follow once Policy 1 is reliable in isolation.
