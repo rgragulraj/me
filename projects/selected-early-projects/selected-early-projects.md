@@ -1,6 +1,6 @@
 ---
 title: "Selected Low-Tech Projects"
-date: "2018 - 2024"
+date: "2018 - Current"
 summary: A curated set of smaller, practical projects that did not need a full standalone project page.
 ---
 
@@ -12,9 +12,7 @@ This page highlights smaller hardware and embedded projects that did not need de
 
 ## Webcam Turret
 
-_Computer Vision + Embedded Control Project_
-
-_Class Project: EGR 456 (taught by Professor Kevin Nichols)_
+_Class Project: EGR 456 (taught by Professor [Kevin Nichols](https://www.linkedin.com/in/kevin-nichols-45180b73/))_
 
 GitHub: <https://github.com/rgragulraj/Webcam_Turret>
 
