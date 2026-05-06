@@ -2,10 +2,18 @@
 title: "Mars Scout Rover — IMU Navigation Subsystem"
 date: "Spring 2026"
 summary: Designed and built a custom IMU navigation board from scratch—schematic, PCB layout, firmware, and UART protocol—as one of seven modular subsystems on a team-built Mars rover.
-image: "Soldered_Front.jpeg"
+image: "314image1.jpg"
 ---
 
-![Mars Scout Rover IMU Navigation Subsystem Hero](./Soldered_Front.jpeg)
+<div class="mars-imu-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
+  <button type="button" aria-label="Previous" onclick="var c=this.parentNode;var s=c.querySelectorAll('.mars-imu-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)-1+3)%3;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
+  <div style="flex: 1; aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; position: relative;">
+    <div class="mars-imu-slide" style="width:100%;height:100%;position:absolute;inset:0;"><img src="./314image1.jpg" alt="Mars Scout Rover IMU Navigation Subsystem - PCB Photo 1" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="mars-imu-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><img src="./314image2.jpg" alt="Mars Scout Rover IMU Navigation Subsystem - PCB Photo 2" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;" /></div>
+    <div class="mars-imu-slide" style="width:100%;height:100%;position:absolute;inset:0;display:none;"><iframe src="https://www.youtube.com/embed/OUy0Lak9kGo" title="Mars Scout Rover IMU Navigation Subsystem - Demo Video" style="width:100%;height:100%;border:none;" allowfullscreen></iframe></div>
+  </div>
+  <button type="button" aria-label="Next" onclick="var c=this.parentNode;var s=c.querySelectorAll('.mars-imu-slide');var i=(parseInt(c.getAttribute('data-carousel-index'),10)+1)%3;c.setAttribute('data-carousel-index',i);s.forEach(function(el,j){el.style.display=j===i?'block':'none';});" style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); color: #fff; font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
+</div>
 
 _EGR 314 | Arizona State University | Spring 2026 | Team 305 (7-person team)_  
 _Professor: [Kevin Nichols](https://www.linkedin.com/in/kevin-nichols-45180b73/)_
