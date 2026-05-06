@@ -12,6 +12,8 @@ This page highlights smaller hardware and embedded projects that did not need de
 
 ## Webcam Turret
 
+_April 2026_
+
 _Class Project: EGR 456 (taught by Professor [Kevin Nichols](https://www.linkedin.com/in/kevin-nichols-45180b73/))_
 
 GitHub: <https://github.com/rgragulraj/Webcam_Turret>
