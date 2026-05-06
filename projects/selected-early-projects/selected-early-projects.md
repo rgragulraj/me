@@ -10,6 +10,33 @@ This page highlights smaller hardware and embedded projects that did not need de
 
 ---
 
+## Webcam Turret
+
+_Computer Vision + Embedded Control Project_
+
+GitHub: <https://github.com/rgragulraj/Webcam_Turret>
+
+<div style="position: relative; max-width: 100%; margin: 1rem 0;">
+  <div style="aspect-ratio: 9/16; min-height: 360px; max-height: 640px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden;">
+    <iframe
+      src="https://www.youtube.com/embed/QOIvBCV77mk"
+      title="Webcam Turret - Hero Video"
+      style="width:100%;height:100%;border:none;"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+
+Webcam-based turret prototype focused on real-time tracking and hardware actuation.
+
+- **What it did**:
+  - Combined live camera input with tracking logic
+  - Connected software output to turret movement control
+  - Explored closed-loop behavior between perception and actuation
+- **What I learned**: This project helped me strengthen my understanding of integrating computer vision pipelines with physical control systems.
+
+---
+
 ## Memory-Based STEM Game (EGR 201 – Team Project)
 
 _2024_
@@ -128,5 +155,3 @@ Arduino-based wearable prototype with:
   - GSM module for emergency alerts
   - Automatic SMS/call trigger on irregular readings
 - **What I learned**: The prototype was early-stage and imperfect, but it marked my first attempt at real-time physiological monitoring and embedded communication.
-
----
