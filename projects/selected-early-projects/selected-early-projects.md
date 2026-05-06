@@ -1,12 +1,12 @@
 ---
-title: "Selected Early Projects"
-date: "2019 - 2024"
-summary: A curated set of early projects that shaped how I think about building, debugging, and shipping software and hardware.
+title: "Selected Low-Tech Projects"
+date: "2018 - 2024"
+summary: A curated set of smaller, practical projects that did not need a full standalone project page.
 ---
 
 ## Overview
 
-Before my formal robotics coursework, I built a series of hardware and embedded systems projects that shaped my interest in robotics and intelligent systems. These ranged from competition prototypes to socially motivated designs.
+This page highlights smaller hardware and embedded projects that did not need dedicated full-page writeups, but still shaped my interest in robotics and intelligent systems.
 
 ---
 
