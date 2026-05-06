@@ -14,6 +14,8 @@ This page highlights smaller hardware and embedded projects that did not need de
 
 _Computer Vision + Embedded Control Project_
 
+_Class Project: EGR 456 (taught by Professor Kevin Nichols)_
+
 GitHub: <https://github.com/rgragulraj/Webcam_Turret>
 
 <div style="position: relative; max-width: 100%; margin: 1rem 0;">
@@ -27,13 +29,15 @@ GitHub: <https://github.com/rgragulraj/Webcam_Turret>
   </div>
 </div>
 
-Webcam-based turret prototype focused on real-time tracking and hardware actuation.
+Low-cost webcam-based, 2-DOF turret prototype for real-time target tracking.
 
 - **What it did**:
-  - Combined live camera input with tracking logic
-  - Connected software output to turret movement control
-  - Explored closed-loop behavior between perception and actuation
-- **What I learned**: This project helped me strengthen my understanding of integrating computer vision pipelines with physical control systems.
+  - Used Python + OpenCV to detect and track a target from a live webcam feed
+  - Sent tracking commands from Python to a Cypress PSoC 5LP board over UART
+  - Used the PSoC to drive two servos with PWM for pan/tilt turret control
+  - Performed automatic sweep/search behavior when no target was detected
+- **Tech stack**: Python, OpenCV, Cypress PSoC 5LP (CY8CKIT-059), UART, PWM servo control
+- **What I learned**: This project improved my understanding of practical vision-to-control pipelines, serial communication with embedded hardware, and fallback behaviors for robust autonomous tracking.
 
 ---
 
