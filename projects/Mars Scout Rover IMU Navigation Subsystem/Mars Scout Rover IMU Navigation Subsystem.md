@@ -2,7 +2,6 @@
 title: "Mars Scout Rover — IMU Navigation Subsystem"
 date: "Spring 2026"
 summary: Designed and built a custom IMU navigation board from scratch—schematic, PCB layout, firmware, and UART protocol—as one of seven modular subsystems on a team-built Mars rover.
-image: "314image1.jpg"
 ---
 
 <div class="mars-imu-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
