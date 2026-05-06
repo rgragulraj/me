@@ -17,7 +17,7 @@ _Computer Vision + Embedded Control Project_
 GitHub: <https://github.com/rgragulraj/Webcam_Turret>
 
 <div style="position: relative; max-width: 100%; margin: 1rem 0;">
-  <div style="aspect-ratio: 9/16; min-height: 360px; max-height: 640px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden;">
+  <div style="aspect-ratio: 16/9; min-height: 200px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden;">
     <iframe
       src="https://www.youtube.com/embed/QOIvBCV77mk"
       title="Webcam Turret - Hero Video"
