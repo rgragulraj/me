@@ -1,7 +1,7 @@
 ---
-title: "Mars Scout Rover — IMU Navigation Subsystem"
+title: "Mars Scout Rover: IMU Navigation Subsystem"
 date: "Spring 2026"
-summary: Designed and built my own IMU navigation board for a team Mars rover—from circuit and PCB to hand-soldered bring-up and firmware—so the rover always knows how it’s tilted and pointed.
+summary: Designed and built my own IMU navigation board for a team Mars rover, from circuit and PCB to hand-soldered bring-up and firmware, so the rover always knows how it’s tilted and pointed.
 image: "314image1.jpg"
 ---
 
@@ -23,11 +23,11 @@ KiCad · PCB Design · ESP32-S3 · Embedded C · I2C · UART · LSM9DS1 (9-DOF I
 
 ## Abstract
 
-For EGR 314, our team built a remotely operated Mars Scout Rover for a planetary exploration–style demo. We split the rover into seven slices of responsibility—each person owned a custom board for things like driving, sensing the environment, spotting obstacles, navigation, cameras, radio, and the operator display.
+For EGR 314, our team built a remotely operated Mars Scout Rover for a planetary exploration-style demo. We split the rover into seven slices of responsibility: each person owned a custom board for things like driving, sensing the environment, spotting obstacles, navigation, cameras, radio, and the operator display.
 
 Those boards all talked to each other on one shared serial bus we defined as a class, so telemetry (and video) could flow back to a laptop ground station.
 
-I owned **navigation**: a small board whose job is to tell the rover **how it’s oriented**—tilt, motion, and heading—so higher-level decisions aren’t flying blind.
+I owned **navigation**: a small board whose job is to tell the rover **how it’s oriented** (tilt, motion, and heading), so higher-level decisions aren’t flying blind.
 
 ---
 
@@ -37,26 +37,26 @@ I owned **navigation**: a small board whose job is to tell the rover **how it’
 
 #### Hardware
 
-- Drew the full circuit and a two-layer PCB in KiCad, then sent it out for fabrication—the same flow you’d use on a real prototype, not just a breadboard sketch.
+- Drew the full circuit and a two-layer PCB in KiCad, then sent it out for fabrication, the same flow you’d use on a real prototype, not just a breadboard sketch.
 - Ran the board on an **ESP32-S3** so I had a modern, capable microcontroller with room to grow.
 - Added a **9-axis IMU** so the rover can sense rotation, linear motion, and magnetic heading in one place.
 - Stepped **12 V** from a barrel jack down to a clean **3.3 V** rail for the sensitive parts, with a fuse and the usual “make it debuggable” touches (pull-ups, LEDs, a USB debug connector).
-- Built the physical board myself—**hand-soldered SMD**—and brought it up until the sensors and comms were behaving.
+- Built the physical board myself (**hand-soldered SMD**) and brought it up until the sensors and comms were behaving.
 
 #### Firmware & getting the team bus working
 
-The rover only works if every board speaks the same language on the shared serial line. I wrote the ESP32-side software that **joins that conversation cleanly**: listening for framed messages, unpacking them reliably, handing off what isn’t mine, and replying when the operator display asks for fresh motion data. Along the way I stress-tested against teammates’ boards—some on ESP32, some on MicroPython—until we were satisfied it wasn’t “my node works alone,” but **the chain works together**.
+The rover only works if every board speaks the same language on the shared serial line. I wrote the ESP32-side software that **joins that conversation cleanly**: listening for framed messages, unpacking them reliably, handing off what isn’t mine, and replying when the operator display asks for fresh motion data. Along the way I stress-tested against teammates’ boards (some on ESP32, some on MicroPython) until we were satisfied it wasn’t “my node works alone,” but **the chain works together**.
 
 #### Power Design
 
-- Sized the 3.3 V rail with a straightforward power budget—what happens under stress, what happens when things are quiet—and checked that the regulator was realistically loaded across the components I cared about.
+- Sized the 3.3 V rail with a straightforward power budget (what happens under stress, what happens when things are quiet) and checked that the regulator was realistically loaded across the components I cared about.
 
 ### Highlights
 
 > Seven teammates, seven custom boards, one shared bus tying the rover together.
-> I carried this subsystem from schematic and layout through fab, soldering, bring-up, and firmware—not just a CAD exercise.
+> I carried this subsystem from schematic and layout through fab, soldering, bring-up, and firmware, not just a CAD exercise.
 > A single IMU package gives gyro, accel, and magnetometer so orientation isn’t stitched together from three mismatched breakout boards.
-> The “hard part” of integration wasn’t soldering—it was behaving predictably alongside everyone else’s code and hardware at full system test.
+> The “hard part” of integration wasn’t soldering; it was behaving predictably alongside everyone else’s code and hardware at full system test.
 
 ---
 
