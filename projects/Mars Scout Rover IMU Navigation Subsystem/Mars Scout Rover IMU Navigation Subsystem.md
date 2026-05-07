@@ -2,7 +2,6 @@
 title: "Mars Scout Rover: IMU Navigation Subsystem"
 date: "Spring 2026"
 summary: Designed and built my own IMU navigation board for a team Mars rover, from circuit and PCB to hand-soldered bring-up and firmware, so the rover always knows how it’s tilted and pointed.
-image: "314image1.jpg"
 ---
 
 <div class="mars-imu-carousel" data-carousel-index="0" style="position: relative; display: flex; align-items: center; gap: 0.75rem; max-width: 100%; margin: 1rem 0;">
